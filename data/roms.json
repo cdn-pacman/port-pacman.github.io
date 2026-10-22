@@ -1,0 +1,39 @@
+{
+  "siteName": "Star UI Community CDN",
+  "devices": {
+    "Pacman": {
+      "name": "Nothing Phone (2a)",
+      "codename": "Pacman",
+      "description": "MediaTek Dimensity 7200 Pro · Codename: Pacman",
+      "maintainer": "Star UI Team",
+      "builds": [
+        {
+          "version": "Alpha V1",
+          "android": "Android 14",
+          "securityPatch": "2024-11-01",
+          "date": "ADD RELEASE DATE",
+          "type": "Fastboot Only",
+          "summary": "Replace this text with your build notes.",
+          "downloadUrl": "",
+          "changelogUrl": "",
+          "sourceUrl": "https://github.com/YOUR-USERNAME/YOUR-REPOSITORY",
+          "status": "DEMO DATA"
+        }
+      ]
+    },
+    "Pong": {
+      "name": "Nothing Phone (2)",
+      "codename": "Pong",
+      "description": "Nothing Phone (2) · Codename: Pong",
+      "maintainer": "Star UI Team",
+      "builds": []
+    },
+    "Spacewar": {
+      "name": "POCO F4",
+      "codename": "Spacewar",
+      "description": "POCO F4 · Codename: Spacewar",
+      "maintainer": "Star UI Team",
+      "builds": []
+    }
+  }
+}
