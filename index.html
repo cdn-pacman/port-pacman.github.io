@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090b10">
+  <meta name="description" content="Star UI ROM downloads, device information, and build history.">
+  <title>Star UI CDN — Pacman</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="Star UI home">
+      <span class="brand-mark">S</span>
+      <span>STAR<span class="brand-muted">UI</span><small>COMMUNITY CDN</small></span>
+    </a>
+    <nav>
+      <a class="nav-link active" href="#Pacman">Downloads</a>
+      <a class="nav-link" href="#about">About</a>
+      <a class="github-link" href="https://github.com/" target="_blank" rel="noreferrer">GitHub <span>↗</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow"><span class="live-dot"></span> ROM DISTRIBUTION PORTAL</div>
+      <h1>Your device.<br><span>Your experience.</span></h1>
+      <p class="hero-copy">Official builds, device information, and release history — all in one place.</p>
+      <div class="hero-meta">
+        <span><i class="meta-icon">◈</i> Community builds</span>
+        <span><i class="meta-icon">↻</i> Release archive</span>
+        <span><i class="meta-icon">⌁</i> Direct downloads</span>
+      </div>
+    </section>
+
+    <section class="device-section" id="Pacman">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">SELECTED DEVICE</div>
+          <h2>Pacman <span class="device-pill">Nothing Phone (2a)</span></h2>
+        </div>
+        <label class="device-select-wrap">
+          <span>DEVICE</span>
+          <select id="deviceSelect" aria-label="Select device">
+            <option value="Pacman" selected>Pacman · Nothing Phone (2a)</option>
+            <option value="Pong">Pong · Nothing Phone (2)</option>
+            <option value="Spacewar">Spacewar · POCO F4</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="device-grid">
+        <article class="device-card featured">
+          <div class="card-topline"><span class="status-tag"><span class="live-dot"></span> DEVICE PROFILE</span><span class="chip">PACMAN</span></div>
+          <div class="phone-art" aria-hidden="true">
+            <div class="phone">
+              <div class="phone-camera c1"></div><div class="phone-camera c2"></div><div class="phone-camera c3"></div>
+              <div class="phone-glyph glyph-a"></div><div class="phone-glyph glyph-b"></div><div class="phone-glyph glyph-c"></div>
+              <div class="phone-logo">NOTHING</div>
+            </div>
+          </div>
+          <h3 id="deviceTitle">Nothing Phone (2a)</h3>
+          <p class="muted" id="deviceDescription">MediaTek Dimensity 7200 Pro · Codename: Pacman</p>
+          <div class="spec-row"><span>Codename</span><strong id="deviceCodename">Pacman</strong></div>
+          <div class="spec-row"><span>Build channel</span><strong>Community</strong></div>
+          <div class="spec-row"><span>Maintainer</span><strong>Star UI Team</strong></div>
+        </article>
+
+        <article class="download-card">
+          <div class="card-topline"><span class="eyebrow">LATEST RELEASE</span><span class="status-label" id="releaseStatus">DEMO DATA</span></div>
+          <div class="release-version" id="releaseVersion">Alpha V1 <span>Android 14</span></div>
+          <p class="muted" id="releaseSummary">Add your latest ROM build details in <code>data/roms.json</code>.</p>
+          <div class="release-stats">
+            <div><span>Security patch</span><strong id="securityPatch">2024-11-01</strong></div>
+            <div><span>Release date</span><strong id="releaseDate">Add date</strong></div>
+            <div><span>Package type</span><strong id="packageType">Fastboot / ZIP</strong></div>
+          </div>
+          <a class="primary-button" id="downloadButton" href="#" target="_blank" rel="noreferrer">Download latest build <span>↓</span></a>
+          <p class="button-note" id="downloadNote">Replace the placeholder URL with your actual build link.</p>
+          <div class="secondary-actions">
+            <a id="changelogLink" href="#" target="_blank" rel="noreferrer">Changelog ↗</a>
+            <a id="sourceLink" href="https://github.com/" target="_blank" rel="noreferrer">Source code ↗</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="history-section">
+      <div class="section-heading history-heading">
+        <div><div class="eyebrow">RELEASE ARCHIVE</div><h2>Build history</h2></div>
+        <span class="archive-count" id="archiveCount">0 releases</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>BUILD</th><th>ANDROID</th><th>DATE</th><th>TYPE</th><th>DOWNLOAD</th></tr></thead>
+          <tbody id="historyBody"><tr><td colspan="5" class="empty-state">Loading release data…</td></tr></tbody>
+        </table>
+      </div>
+      <p class="table-footnote">Only publish builds you have tested. Verify checksums before flashing.</p>
+    </section>
+
+    <section class="notice" id="about">
+      <div class="notice-icon">!</div>
+      <div><h3>Before you flash</h3><p>Back up your data, read the installation instructions, and confirm the build is intended for your exact device. This page is a template; release details and links must be added by you.</p></div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand footer-brand" href="./"><span class="brand-mark">S</span><span>STAR<span class="brand-muted">UI</span><small>COMMUNITY CDN</small></span></a>
+    <p>Independent community project · Not affiliated with Nothing Technology.</p>
+    <span class="footer-version">CDN TEMPLATE <b>v1.0</b></span>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
