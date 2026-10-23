@@ -1,11 +1,11 @@
 {
-  "siteName": "Star UI Community CDN",
+  "siteName": "AxionOS Official Downloads",
   "devices": {
     "Pacman": {
       "name": "Nothing Phone (2a)",
       "codename": "Pacman",
       "description": "MediaTek Dimensity 7200 Pro · Codename: Pacman",
-      "maintainer": "Star UI Team",
+      "maintainer": "AxionOS Team",
       "builds": [
         {
           "version": "Alpha V1",
@@ -14,9 +14,9 @@
           "date": "ADD RELEASE DATE",
           "type": "Fastboot Only",
           "summary": "Replace this text with your build notes.",
-          "downloadUrl": "",
+          "downloadUrl": "https://drive.google.com/file/d/16TX595e2qt_dst56D91n0KKZOdN0NStT/view?usp=drivesdk",
           "changelogUrl": "",
-          "sourceUrl": "https://github.com/YOUR-USERNAME/YOUR-REPOSITORY",
+          "sourceUrl": "https://github.com/AxionOS",
           "status": "DEMO DATA"
         }
       ]
@@ -25,14 +25,14 @@
       "name": "Nothing Phone (2)",
       "codename": "Pong",
       "description": "Nothing Phone (2) · Codename: Pong",
-      "maintainer": "Star UI Team",
+      "maintainer": "AxionOS Team",
       "builds": []
     },
     "Spacewar": {
       "name": "POCO F4",
       "codename": "Spacewar",
       "description": "POCO F4 · Codename: Spacewar",
-      "maintainer": "Star UI Team",
+      "maintainer": "AxionOS Team",
       "builds": []
     }
   }

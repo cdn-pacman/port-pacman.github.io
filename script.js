@@ -6,7 +6,7 @@ const fallbackData = {
       name: "Nothing Phone (2a)",
       codename: "Pacman",
       description: "MediaTek Dimensity 7200 Pro · Codename: Pacman",
-      maintainer: "Star UI Team",
+      maintainer: "AxionOS Team",
       builds: [{
         version: "Alpha V1",
         android: "Android 14",
@@ -24,14 +24,14 @@ const fallbackData = {
       name: "Nothing Phone (2)",
       codename: "Pong",
       description: "Nothing Phone (2) · Codename: Pong",
-      maintainer: "Star UI Team",
+      maintainer: "AxionOS Team",
       builds: []
     },
     Spacewar: {
       name: "POCO F4",
       codename: "Spacewar",
       description: "POCO F4 · Codename: Spacewar",
-      maintainer: "Star UI Team",
+      maintainer: "AxionOS Team",
       builds: []
     }
   }

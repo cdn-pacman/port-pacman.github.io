@@ -1,4 +1,4 @@
-# Star UI Community CDN — Website Template
+# AxionOS CDN — Pacman
 
 A responsive ROM download page inspired by modern Android ROM CDN pages. Built with plain HTML, CSS and JavaScript for GitHub Pages.
 
@@ -9,7 +9,7 @@ A responsive ROM download page inspired by modern Android ROM CDN pages. Built w
 - `data/roms.json` — edit this file to add your devices and ROM releases
 
 ## Publish with GitHub Pages
-1. Create a GitHub repository (for example, `starui-cdn`).
+1. Create a GitHub repository for the site (for example, `pacman-cdn`).
 2. Upload **all files and folders** from this ZIP. Keep `data/roms.json` inside the `data` folder.
 3. Open repository **Settings → Pages**.
 4. Under Build and deployment, choose **Deploy from a branch**.
@@ -37,8 +37,8 @@ Example:
   "type": "Fastboot Only",
   "summary": "Your release notes here.",
   "downloadUrl": "https://example.com/your-rom.zip",
-  "changelogUrl": "https://github.com/YOUR-USERNAME/YOUR-REPOSITORY/releases",
-  "sourceUrl": "https://github.com/YOUR-USERNAME/YOUR-REPOSITORY",
+  "changelogUrl": "https://github.com/AxionOS/releases",
+  "sourceUrl": "https://github.com/AxionOS",
   "status": "ALPHA"
 }
 ```
