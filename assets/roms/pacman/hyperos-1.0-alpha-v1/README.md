@@ -1,12 +1,13 @@
-Add screenshots for the HyperOS-1.0 Alpha V1 Pacman ROM in this folder.
+# HyperOS 1.0 Alpha V1 screenshots — Nothing Phone (2a) / Pacman
 
-After uploading the image file, add its path to the `screenshots` array in `data/roms.json`, for example:
+Upload this ROM's screenshots into this folder. The website discovers image files here automatically when someone opens **View ROMs**; no JSON edit is needed for screenshots.
 
-```json
-"screenshots": [
-  "assets/roms/pacman/hyperos-1.0-alpha-v1/screenshot-01.jpg",
-  "assets/roms/pacman/hyperos-1.0-alpha-v1/screenshot-02.jpg"
-]
-```
+Supported image extensions: `.png`, `.jpg`, `.jpeg`, `.webp`, `.gif`, `.avif`.
 
-Keep screenshots for each ROM version in its own folder. GitHub Pages cannot automatically list files in a folder, so the JSON manifest must list each screenshot path. ROM download links and details are also managed in `data/roms.json`.
+Use a sortable filename order, for example:
+
+- `01-home.png`
+- `02-settings.png`
+- `03-about.jpg`
+
+Keep the ROM metadata and download link in `data/roms.json`. The release popup gets the ROM files from the Google Drive folder currently configured there.
