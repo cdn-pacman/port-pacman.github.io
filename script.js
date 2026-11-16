@@ -10,98 +10,174 @@ const romData = [
 
 const imageSource = (path) => SOURCE + path.split('/').map(encodeURIComponent).join('/');
 
+const openDialog = (id) => {
+    const dialog = document.getElementById(id);
+    if (dialog && typeof dialog.showModal === 'function') dialog.showModal();
+};
+
+const closeDialog = (id) => {
+    const dialog = document.getElementById(id);
+    if (dialog) dialog.close();
+};
+
 document.addEventListener('DOMContentLoaded', () => {
-    if (window.AOS) AOS.init({once:true,offset:50,duration:800,easing:'ease-out-cubic'});
+    if (window.AOS) {
+        AOS.init({ once: true, offset: 45, duration: 800, easing: 'ease-out-cubic' });
+    }
+
     const romContainer = document.getElementById('rom-container');
+    const latestContainer = document.getElementById('latest-container');
     const gallerySection = document.getElementById('gallery');
     const galleryContainer = document.getElementById('gallery-container');
     const galleryTitle = document.getElementById('gallery-title');
-    const latestContainer = document.getElementById('latest-container');
+    const telegramDialog = document.getElementById('telegram-dialog');
 
-    function createRomCard(rom, index) {
+    const createRomCard = (rom, index) => {
         const card = document.createElement('article');
         card.className = 'rom-card';
-        card.dataset.tilt = '';
         card.dataset.aos = 'fade-up';
-        card.dataset.aosDelay = String(index * 100);
+        card.dataset.aosDelay = String(index * 90);
+
         const header = document.createElement('div');
         header.className = 'rom-header';
+
         const title = document.createElement('h3');
         title.className = 'rom-title';
         title.textContent = rom.title;
-        const tags = document.createElement('div');
-        tags.className = 'rom-meta';
-        rom.meta.forEach((value) => { const tag = document.createElement('span'); tag.textContent = value; tags.append(tag); });
-        const description = document.createElement('div');
-        description.className = 'rom-desc';
-        description.textContent = rom.desc;
-        header.append(title, tags, description);
+
+        const meta = document.createElement('div');
+        meta.className = 'rom-meta';
+        rom.meta.forEach((item) => {
+            const tag = document.createElement('span');
+            tag.textContent = item;
+            meta.append(tag);
+        });
+
+        const desc = document.createElement('div');
+        desc.className = 'rom-desc';
+        desc.textContent = rom.desc;
+
         const actions = document.createElement('div');
         actions.className = 'rom-actions';
+
         const release = document.createElement('a');
         release.href = rom.url;
         release.target = '_blank';
         release.rel = 'noopener noreferrer';
         release.className = 'btn-small btn-download';
-        release.textContent = 'View Release';
-        const gallery = document.createElement('button');
-        gallery.type = 'button';
-        gallery.className = 'btn-small btn-gallery';
-        gallery.textContent = 'View Screenshots';
-        gallery.addEventListener('click', () => showGallery(rom));
-        actions.append(release, gallery);
+        release.textContent = 'View release';
+
+        const galleryButton = document.createElement('button');
+        galleryButton.type = 'button';
+        galleryButton.className = 'btn-small btn-gallery';
+        galleryButton.textContent = 'Screenshots';
+        galleryButton.addEventListener('click', () => showGallery(rom));
+
+        header.append(title, meta, desc);
+        actions.append(release, galleryButton);
         card.append(header, actions);
         return card;
-    }
+    };
 
-    function showGallery(rom) {
+    const showGallery = (rom) => {
         galleryContainer.replaceChildren();
         galleryTitle.textContent = rom.title;
-        rom.images.forEach((imgSrc, i) => {
-            const item = document.createElement('div');
-            item.className = 'swiper-slide';
-            const img = document.createElement('img');
-            img.src = imageSource(imgSrc);
-            img.alt = `${rom.title} screenshot ${i + 1}`;
-            img.loading = 'lazy';
-            item.append(img);
-            galleryContainer.append(item);
+
+        rom.images.forEach((imgSrc, index) => {
+            const slide = document.createElement('div');
+            slide.className = 'swiper-slide';
+            const image = document.createElement('img');
+            image.src = imageSource(imgSrc);
+            image.alt = `${rom.title} screenshot ${index + 1}`;
+            image.loading = 'lazy';
+            slide.append(image);
+            galleryContainer.append(slide);
         });
+
         gallerySection.style.display = 'block';
-        if (window.mySwiper) window.mySwiper.destroy(true, true);
+
+        if (window.mySwiper) {
+            window.mySwiper.destroy(true, true);
+        }
+
         if (window.Swiper) {
             window.mySwiper = new Swiper('#gallery-swiper', {
-                effect:'coverflow', grabCursor:true, centeredSlides:true,
-                slidesPerView:'auto', initialSlide:1, loop:rom.images.length > 2,
-                speed:800, coverflowEffect:{rotate:15,stretch:0,depth:250,modifier:1,slideShadows:false},
-                pagination:{el:'.swiper-pagination',clickable:true,dynamicBullets:true},
-                keyboard:{enabled:true}, mousewheel:{sensitivity:1,releaseOnEdges:true}
+                effect: 'coverflow',
+                grabCursor: true,
+                centeredSlides: true,
+                slidesPerView: 'auto',
+                initialSlide: 1,
+                loop: rom.images.length > 2,
+                speed: 800,
+                coverflowEffect: {
+                    rotate: 15,
+                    stretch: 0,
+                    depth: 250,
+                    modifier: 1,
+                    slideShadows: false,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                    dynamicBullets: true,
+                },
+                keyboard: { enabled: true },
+                mousewheel: { sensitivity: 1, releaseOnEdges: true },
             });
         }
-        gallerySection.scrollIntoView({behavior:'smooth',block:'start'});
+
+        gallerySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    if (romData.length > 0 && latestContainer) {
+        const latestCard = createRomCard(romData[0], 0);
+        latestCard.classList.add('latest-release-card');
+        latestContainer.append(latestCard);
     }
 
-    if (romData.length) latestContainer.append(createRomCard(romData[0], 0));
-    romData.forEach((rom, index) => romContainer.append(createRomCard(rom, index)));
-    if (window.VanillaTilt) VanillaTilt.init(document.querySelectorAll('.rom-card'));
-    if (window.AOS) AOS.refresh();
+    romData.forEach((rom, index) => romContainer.appendChild(createRomCard(rom, index)));
 
-    const telegramDialog = document.getElementById('telegram-dialog');
-    document.getElementById('open-telegram').addEventListener('click', () => telegramDialog.showModal());
-    document.getElementById('close-telegram').addEventListener('click', () => telegramDialog.close());
-    telegramDialog.addEventListener('click', (event) => { if (event.target === telegramDialog) telegramDialog.close(); });
+    if (window.VanillaTilt) {
+        VanillaTilt.init(document.querySelectorAll('.rom-card'));
+    }
+
+    document.getElementById('open-telegram').addEventListener('click', () => openDialog('telegram-dialog'));
+    document.getElementById('hero-telegram').addEventListener('click', () => openDialog('telegram-dialog'));
+    document.getElementById('close-telegram').addEventListener('click', () => closeDialog('telegram-dialog'));
+    telegramDialog.addEventListener('click', (event) => {
+        if (event.target === telegramDialog) closeDialog('telegram-dialog');
+    });
 
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImg');
-    const closeModal = () => { modal.classList.remove('show'); modal.style.display='none'; document.body.style.overflow=''; };
+    const closeModal = () => {
+        modal.classList.remove('show');
+        modal.style.display = 'none';
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    };
+
     galleryContainer.addEventListener('click', (event) => {
-        if (event.target.tagName !== 'IMG') return;
-        modalImg.src = event.target.src;
+        const target = event.target;
+        if (target.tagName !== 'IMG') return;
+        modalImg.src = target.src;
         modal.style.display = 'block';
+        modal.setAttribute('aria-hidden', 'false');
         requestAnimationFrame(() => modal.classList.add('show'));
         document.body.style.overflow = 'hidden';
     });
+
     document.querySelector('.close-modal').addEventListener('click', closeModal);
-    modal.addEventListener('click', (event) => { if (event.target === modal) closeModal(); });
-    document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && modal.style.display === 'block') closeModal(); });
+    modal.addEventListener('click', (event) => {
+        if (event.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            if (modal.style.display === 'block') closeModal();
+            if (telegramDialog.open) closeDialog('telegram-dialog');
+        }
+    });
+
+    if (window.AOS) AOS.refresh();
 });

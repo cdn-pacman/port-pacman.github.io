@@ -5,44 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#050505">
     <title>CDN-Pacman ROMs</title>
-    <meta name="description" content="ROM ports by CDN-Pacman.">
+    <meta name="description" content="ROM ports, releases, and support for the Pacman device community.">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <link rel="stylesheet" href="style.css?v=cdn-pacman-1">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=cdn-pacman-premium-1">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
-    <nav aria-label="Main navigation">
+    <nav class="topbar" aria-label="Main navigation">
         <a class="logo" href="#home">CDN-Pacman <span>ROMs</span></a>
-        <div class="nav-links">
-            <button type="button" class="telegram-trigger" id="open-telegram" aria-label="Open Telegram groups" aria-haspopup="dialog" aria-controls="telegram-dialog">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.7 3.3a1.2 1.2 0 0 0-1.25-.18L2.7 10.1a1.25 1.25 0 0 0 .1 2.35l4.4 1.5 1.5 4.65a1.25 1.25 0 0 0 2.2.38l2.55-3.1 4.35 3.2a1.25 1.25 0 0 0 1.95-.78l2.3-13.75a1.25 1.25 0 0 0-.35-1.25ZM9 13.2l8.4-6.15-6.9 7.5-.3 2.55L9 13.2Z"/></svg>
-                <span>Telegram</span>
-            </button>
-        </div>
+        <button type="button" class="telegram-trigger" id="open-telegram" aria-label="Open Telegram groups" aria-haspopup="dialog" aria-controls="telegram-dialog">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.7 3.3a1.2 1.2 0 0 0-1.25-.18L2.7 10.1a1.25 1.25 0 0 0 .1 2.35l4.4 1.5 1.5 4.65a1.25 1.25 0 0 0 2.2.38l2.55-3.1 4.35 3.2a1.25 1.25 0 0 0 1.95-.78l2.3-13.75a1.25 1.25 0 0 0-.35-1.25ZM9 13.2l8.4-6.15-6.9 7.5-.3 2.55L9 13.2Z"/></svg>
+            <span>Telegram</span>
+        </button>
     </nav>
 
     <main id="home">
         <header class="hero">
-            <div class="hero-content" data-aos="fade-up" data-aos-duration="800">
-                <div class="badge">CDN-Pacman ROMs</div>
-                <h1>CDN-Pacman <span class="gradient-text">ROMs</span></h1>
+            <div class="hero-content" data-aos="fade-up" data-aos-duration="900">
+                <div class="eyebrow"><span class="eyebrow-dot"></span> Pacman device community</div>
+                <h1>Custom ROMs<br><span class="gradient-text">for Pacman</span></h1>
+                <p>Latest ports, screenshots, release links, and support channels for the Pacman community.</p>
+                <div class="hero-actions">
+                    <a href="#portfolio" class="primary-btn">View ROMs</a>
+                    <button type="button" class="secondary-btn" id="hero-telegram">Telegram groups</button>
+                </div>
+            </div>
+            <div class="hero-badge" data-aos="zoom-in" data-aos-duration="900" data-aos-delay="150">
+                <div class="badge-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.7 3.3a1.2 1.2 0 0 0-1.25-.18L2.7 10.1a1.25 1.25 0 0 0 .1 2.35l4.4 1.5 1.5 4.65a1.25 1.25 0 0 0 2.2.38l2.55-3.1 4.35 3.2a1.25 1.25 0 0 0 1.95-.78l2.3-13.75a1.25 1.25 0 0 0-.35-1.25ZM9 13.2l8.4-6.15-6.9 7.5-.3 2.55L9 13.2Z"/></svg>
+                </div>
+                <div class="badge-text">
+                    <strong>Release hub</strong>
+                    <span>pacman_ports</span>
+                </div>
             </div>
         </header>
 
         <section id="latest" class="portfolio-section latest-section">
-            <div class="section-title"><h2>Latest <span class="gradient-text">Release</span></h2></div>
+            <div class="section-title" data-aos="fade-up">
+                <div class="eyebrow"><span class="eyebrow-dot"></span> Latest builds</div>
+                <h2>Latest <span class="gradient-text">release</span></h2>
+            </div>
             <div class="latest-release-container" id="latest-container"></div>
         </section>
 
         <section id="portfolio" class="portfolio-section">
-            <div class="section-title"><h2><span class="gradient-text">ROMs</span></h2></div>
+            <div class="section-title" data-aos="fade-up">
+                <div class="eyebrow"><span class="eyebrow-dot"></span> Community library</div>
+                <h2><span class="gradient-text">ROMs</span></h2>
+            </div>
             <div class="portfolio-grid" id="rom-container"></div>
         </section>
 
-        <section id="gallery" class="gallery-section" style="display:none">
-            <div class="section-title">
-                <h2><span class="gradient-text" id="gallery-title">ROM</span> Screenshots</h2>
+        <section id="gallery" class="gallery-section" style="display:none;">
+            <div class="section-title" data-aos="fade-up">
+                <div class="eyebrow"><span class="eyebrow-dot"></span> Screenshot gallery</div>
+                <h2><span class="gradient-text" id="gallery-title">ROM</span></h2>
             </div>
             <div class="swiper gallery-slider" id="gallery-swiper">
                 <div class="swiper-wrapper" id="gallery-container"></div>
@@ -54,21 +73,24 @@
     <footer>
         <div class="footer-content">
             <div class="footer-logo">CDN-Pacman <span>ROMs</span></div>
-            <div class="maintainer">Maintainer: <a href="https://github.com/cdn-pacman" target="_blank" rel="noopener noreferrer">cdn-pacman (GitHub) ↗</a></div>
+            <div class="footer-meta">
+                <a href="https://github.com/cdn-pacman" target="_blank" rel="noopener noreferrer">Maintainer: cdn-pacman (GitHub)</a>
+            </div>
         </div>
     </footer>
 
     <dialog id="telegram-dialog" class="telegram-dialog" aria-labelledby="telegram-title">
-        <button type="button" class="telegram-close" id="close-telegram" aria-label="Close">×</button>
+        <button type="button" class="telegram-close" id="close-telegram" aria-label="Close Telegram dialog">×</button>
         <div class="telegram-mark" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M21.7 3.3a1.2 1.2 0 0 0-1.25-.18L2.7 10.1a1.25 1.25 0 0 0 .1 2.35l4.4 1.5 1.5 4.65a1.25 1.25 0 0 0 2.2.38l2.55-3.1 4.35 3.2a1.25 1.25 0 0 0 1.95-.78l2.3-13.75a1.25 1.25 0 0 0-.35-1.25ZM9 13.2l8.4-6.15-6.9 7.5-.3 2.55L9 13.2Z"/></svg>
         </div>
         <h2 id="telegram-title">Telegram</h2>
-        <a class="telegram-option" href="https://t.me/pacman_ports" target="_blank" rel="noopener noreferrer"><span>Release Group</span><span aria-hidden="true">↗</span></a>
-        <a class="telegram-option" href="https://t.me/nikki_chats" target="_blank" rel="noopener noreferrer"><span>Maintainer Support Group</span><span aria-hidden="true">↗</span></a>
+        <a class="telegram-option" href="https://t.me/pacman_ports" target="_blank" rel="noopener noreferrer"><span>Release group</span><span aria-hidden="true">↗</span></a>
+        <a class="telegram-option" href="https://t.me/nikki_chats" target="_blank" rel="noopener noreferrer"><span>Support group</span><span aria-hidden="true">↗</span></a>
+        <a class="telegram-option" href="https://github.com/cdn-pacman" target="_blank" rel="noopener noreferrer"><span>GitHub</span><span aria-hidden="true">↗</span></a>
     </dialog>
 
-    <div id="imageModal" class="modal">
+    <div id="imageModal" class="modal" aria-hidden="true">
         <button class="close-modal" type="button" aria-label="Close screenshot">&times;</button>
         <img class="modal-content" id="modalImg" alt="ROM screenshot">
     </div>
@@ -76,6 +98,6 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="script.js?v=cdn-pacman-1"></script>
+    <script src="script.js?v=cdn-pacman-premium-1"></script>
 </body>
 </html>
