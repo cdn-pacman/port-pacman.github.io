@@ -2,19 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#050505">
-    <title>CDN-Pacman ROMs</title>
-    <meta name="description" content="ROM ports, releases, and support for the Pacman device community.">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <link rel="stylesheet" href="style.css?v=cdn-pacman-premium-1">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <title>CDN-Pacman ROMs — Nothing Phone 2a Development</title>
+    <meta name="description" content="CDN-Pacman development and ROM projects for Nothing Phone (2a) and (2a) Pro, powered by MediaTek Dimensity 7200 Pro.">
+    <link rel="stylesheet" href="style.css?v=pacman-dev-2">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="script.js?v=pacman-dev-2" defer></script>
 </head>
 <body>
+    <canvas id="rain-canvas" aria-hidden="true"></canvas>
     <nav class="topbar" aria-label="Main navigation">
-        <a class="logo" href="#home">CDN-Pacman <span>ROMs</span></a>
-        <button type="button" class="telegram-trigger" id="open-telegram" aria-label="Open Telegram groups" aria-haspopup="dialog" aria-controls="telegram-dialog">
+        <a class="brand" href="#home">CDN-PACMAN <span>ROMS</span></a>
+        <button type="button" class="telegram-trigger" id="open-telegram" aria-label="Open Telegram dashboard" aria-haspopup="dialog" aria-controls="telegram-dialog">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.7 3.3a1.2 1.2 0 0 0-1.25-.18L2.7 10.1a1.25 1.25 0 0 0 .1 2.35l4.4 1.5 1.5 4.65a1.25 1.25 0 0 0 2.2.38l2.55-3.1 4.35 3.2a1.25 1.25 0 0 0 1.95-.78l2.3-13.75a1.25 1.25 0 0 0-.35-1.25ZM9 13.2l8.4-6.15-6.9 7.5-.3 2.55L9 13.2Z"/></svg>
             <span>Telegram</span>
         </button>
@@ -22,82 +22,77 @@
 
     <main id="home">
         <header class="hero">
-            <div class="hero-content" data-aos="fade-up" data-aos-duration="900">
-                <div class="eyebrow"><span class="eyebrow-dot"></span> Pacman device community</div>
-                <h1>Custom ROMs<br><span class="gradient-text">for Pacman</span></h1>
-                <p>Latest ports, screenshots, release links, and support channels for the Pacman community.</p>
+            <div class="hero-copy">
+                <div class="eyebrow"><span class="status-dot"></span> INDEPENDENT ANDROID DEVELOPMENT</div>
+                <h1>CDN-Pacman<br><span class="gradient-title">ROMs</span></h1>
+                <p>Custom ROM development for Nothing Phone (2a) and Nothing Phone (2a) Pro, powered by the MediaTek Dimensity 7200 Pro platform.</p>
                 <div class="hero-actions">
-                    <a href="#portfolio" class="primary-btn">View ROMs</a>
-                    <button type="button" class="secondary-btn" id="hero-telegram">Telegram groups</button>
+                    <a class="primary-button" href="#project-chat">Explore the project <span aria-hidden="true">↓</span></a>
+                    <button class="outline-button" type="button" id="hero-telegram">Telegram dashboard <span aria-hidden="true">↗</span></button>
                 </div>
+                <div class="device-chips"><span>Nothing Phone (2a)</span><span>Nothing Phone (2a) Pro</span><span>Dimensity 7200 Pro</span></div>
             </div>
-            <div class="hero-badge" data-aos="zoom-in" data-aos-duration="900" data-aos-delay="150">
-                <div class="badge-icon">
-                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.7 3.3a1.2 1.2 0 0 0-1.25-.18L2.7 10.1a1.25 1.25 0 0 0 .1 2.35l4.4 1.5 1.5 4.65a1.25 1.25 0 0 0 2.2.38l2.55-3.1 4.35 3.2a1.25 1.25 0 0 0 1.95-.78l2.3-13.75a1.25 1.25 0 0 0-.35-1.25ZM9 13.2l8.4-6.15-6.9 7.5-.3 2.55L9 13.2Z"/></svg>
-                </div>
-                <div class="badge-text">
-                    <strong>Release hub</strong>
-                    <span>pacman_ports</span>
-                </div>
+            <div class="hero-side" aria-label="Project platform">
+                <div class="chip-orbit orbit-one"></div><div class="chip-orbit orbit-two"></div>
+                <div class="chip-core"><span>MTK</span><strong>7200</strong><small>PRO PLATFORM</small></div>
+                <span class="orbit-label label-top">PACMAN</span><span class="orbit-label label-bottom">2a SERIES</span>
             </div>
         </header>
 
-        <section id="latest" class="portfolio-section latest-section">
-            <div class="section-title" data-aos="fade-up">
-                <div class="eyebrow"><span class="eyebrow-dot"></span> Latest builds</div>
-                <h2>Latest <span class="gradient-text">release</span></h2>
+        <section class="project-chat section" id="project-chat" aria-labelledby="chat-heading">
+            <div class="section-heading">
+                <div class="eyebrow">PROJECT DESK</div>
+                <h2 id="chat-heading">Ask about the <span class="gradient-title">project</span></h2>
+                <p>A quick project guide for devices, development, releases, and support.</p>
             </div>
-            <div class="latest-release-container" id="latest-container"></div>
+            <div class="chat-window">
+                <div class="chat-topline"><span class="chat-live-dot"></span><div><strong>CDN-Pacman Project Chat</strong><small>Project info assistant</small></div><span class="chat-status">ONLINE</span></div>
+                <div id="chat-messages" class="chat-messages" role="log" aria-live="polite" aria-relevant="additions">
+                    <div class="message assistant-message"><span class="message-avatar">CP</span><p>Hi! I can help with basic project information. Choose a topic or type a question below.</p></div>
+                </div>
+                <div class="quick-questions" aria-label="Suggested questions">
+                    <button type="button" data-question="Which devices are supported?">Supported devices</button>
+                    <button type="button" data-question="What chip is used?">Chipset</button>
+                    <button type="button" data-question="Where are releases?">ROM releases</button>
+                    <button type="button" data-question="How do I get support?">Get support</button>
+                </div>
+                <form id="chat-form" class="chat-form">
+                    <label class="visually-hidden" for="chat-input">Ask about the project</label>
+                    <input id="chat-input" name="message" type="text" placeholder="Ask about devices, chipset, releases…" autocomplete="off" maxlength="240" required>
+                    <button type="submit" aria-label="Send message"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20.5 22 12 3 3.5l.1 6.6L16 12 3.1 13.9 3 20.5Z"/></svg></button>
+                </form>
+                <p class="chat-disclaimer">Project info chat · For live help, use the support group in Telegram.</p>
+            </div>
         </section>
 
-        <section id="portfolio" class="portfolio-section">
-            <div class="section-title" data-aos="fade-up">
-                <div class="eyebrow"><span class="eyebrow-dot"></span> Community library</div>
-                <h2><span class="gradient-text">ROMs</span></h2>
-            </div>
-            <div class="portfolio-grid" id="rom-container"></div>
+        <section class="feature-card-section section" aria-label="HyperOS project feature">
+            <a class="feature-image-link" href="https://t.me/pacman_ports" target="_blank" rel="noopener noreferrer" aria-label="Open CDN-Pacman release group on Telegram">
+                <img class="feature-image" src="assets/hyperos-pacman-card.svg" alt="HyperOS project card for Nothing Phone (2a), version 4.0.0.10, by CDN-Pacman">
+                <span class="feature-image-hint">OPEN RELEASE GROUP <span aria-hidden="true">↗</span></span>
+            </a>
         </section>
 
-        <section id="gallery" class="gallery-section" style="display:none;">
-            <div class="section-title" data-aos="fade-up">
-                <div class="eyebrow"><span class="eyebrow-dot"></span> Screenshot gallery</div>
-                <h2><span class="gradient-text" id="gallery-title">ROM</span></h2>
+        <section class="device-section section" id="devices">
+            <div class="section-heading">
+                <div class="eyebrow">DEVELOPMENT TARGETS</div>
+                <h2>Nothing Phone <span class="gradient-title">2a series</span></h2>
+                <p>Built around the MediaTek Dimensity 7200 Pro platform.</p>
             </div>
-            <div class="swiper gallery-slider" id="gallery-swiper">
-                <div class="swiper-wrapper" id="gallery-container"></div>
-                <div class="swiper-pagination"></div>
+            <div class="device-grid">
+                <article class="device-card"><span class="device-number">01 / PACMAN</span><h3>Nothing Phone (2a)</h3><p>Primary development target · MediaTek Dimensity 7200 Pro</p><a href="https://t.me/pacman_ports" target="_blank" rel="noopener noreferrer">View release channel <span aria-hidden="true">↗</span></a></article>
+                <article class="device-card"><span class="device-number">02 / 2a SERIES</span><h3>Nothing Phone (2a) Pro</h3><p>Development and compatibility updates for the 2a Pro community.</p><a href="https://t.me/pacman_ports" target="_blank" rel="noopener noreferrer">View release channel <span aria-hidden="true">↗</span></a></article>
             </div>
         </section>
     </main>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-logo">CDN-Pacman <span>ROMs</span></div>
-            <div class="footer-meta">
-                <a href="https://github.com/cdn-pacman" target="_blank" rel="noopener noreferrer">Maintainer: cdn-pacman (GitHub)</a>
-            </div>
-        </div>
-    </footer>
+    <footer class="site-footer"><a class="brand" href="#home">CDN-PACMAN <span>ROMS</span></a><p>Independent development for the Nothing Phone (2a) series.</p><a class="maintainer-link" href="https://github.com/cdn-pacman" target="_blank" rel="noopener noreferrer">Maintainer: cdn-pacman (GitHub) ↗</a></footer>
 
     <dialog id="telegram-dialog" class="telegram-dialog" aria-labelledby="telegram-title">
-        <button type="button" class="telegram-close" id="close-telegram" aria-label="Close Telegram dialog">×</button>
-        <div class="telegram-mark" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M21.7 3.3a1.2 1.2 0 0 0-1.25-.18L2.7 10.1a1.25 1.25 0 0 0 .1 2.35l4.4 1.5 1.5 4.65a1.25 1.25 0 0 0 2.2.38l2.55-3.1 4.35 3.2a1.25 1.25 0 0 0 1.95-.78l2.3-13.75a1.25 1.25 0 0 0-.35-1.25ZM9 13.2l8.4-6.15-6.9 7.5-.3 2.55L9 13.2Z"/></svg>
-        </div>
-        <h2 id="telegram-title">Telegram</h2>
-        <a class="telegram-option" href="https://t.me/pacman_ports" target="_blank" rel="noopener noreferrer"><span>Release group</span><span aria-hidden="true">↗</span></a>
-        <a class="telegram-option" href="https://t.me/nikki_chats" target="_blank" rel="noopener noreferrer"><span>Support group</span><span aria-hidden="true">↗</span></a>
-        <a class="telegram-option" href="https://github.com/cdn-pacman" target="_blank" rel="noopener noreferrer"><span>GitHub</span><span aria-hidden="true">↗</span></a>
+        <button type="button" class="dialog-close" id="close-telegram" aria-label="Close Telegram dashboard">×</button>
+        <div class="telegram-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21.7 3.3a1.2 1.2 0 0 0-1.25-.18L2.7 10.1a1.25 1.25 0 0 0 .1 2.35l4.4 1.5 1.5 4.65a1.25 1.25 0 0 0 2.2.38l2.55-3.1 4.35 3.2a1.25 1.25 0 0 0 1.95-.78l2.3-13.75a1.25 1.25 0 0 0-.35-1.25ZM9 13.2l8.4-6.15-6.9 7.5-.3 2.55L9 13.2Z"/></svg></div>
+        <div class="eyebrow dialog-eyebrow">CDN-PACMAN COMMUNITY</div><h2 id="telegram-title">Telegram dashboard</h2><p class="dialog-copy">Choose where you want to go.</p>
+        <a class="telegram-option" href="https://t.me/pacman_ports" target="_blank" rel="noopener noreferrer"><span><strong>Release group</strong><small>ROM announcements and downloads</small></span><b aria-hidden="true">↗</b></a>
+        <a class="telegram-option" href="https://t.me/nikki_chats" target="_blank" rel="noopener noreferrer"><span><strong>Maintainer support</strong><small>Questions and community help</small></span><b aria-hidden="true">↗</b></a>
     </dialog>
-
-    <div id="imageModal" class="modal" aria-hidden="true">
-        <button class="close-modal" type="button" aria-label="Close screenshot">&times;</button>
-        <img class="modal-content" id="modalImg" alt="ROM screenshot">
-    </div>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="script.js?v=cdn-pacman-premium-1"></script>
 </body>
 </html>
