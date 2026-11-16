@@ -3,103 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dronxtu's ROM Portfolio - MT6833</title>
-    <meta name="description" content="Discover the ultimate custom ROMs for POCO M4 Pro 5G and Redmi Note 11 Series. Crafted by Ketan | Dronxtu.">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="style.css?v=20260906b">
+    <meta name="theme-color" content="#050505">
+    <title>CDN-Pacman ROMs</title>
+    <meta name="description" content="ROM ports by CDN-Pacman.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="style.css?v=cdn-pacman-1">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
-    <nav>
-        <div class="logo">Dronxtu<span>ROMs</span></div>
+    <nav aria-label="Main navigation">
+        <a class="logo" href="#home">CDN-Pacman <span>ROMs</span></a>
         <div class="nav-links">
-            <a href="#portfolio">My ROMs</a>
-            <a href="https://t.me/mt6833unified_updates" target="_blank" class="nav-btn">Telegram Channel</a>
+            <button type="button" class="telegram-trigger" id="open-telegram" aria-label="Open Telegram groups" aria-haspopup="dialog" aria-controls="telegram-dialog">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.7 3.3a1.2 1.2 0 0 0-1.25-.18L2.7 10.1a1.25 1.25 0 0 0 .1 2.35l4.4 1.5 1.5 4.65a1.25 1.25 0 0 0 2.2.38l2.55-3.1 4.35 3.2a1.25 1.25 0 0 0 1.95-.78l2.3-13.75a1.25 1.25 0 0 0-.35-1.25ZM9 13.2l8.4-6.15-6.9 7.5-.3 2.55L9 13.2Z"/></svg>
+                <span>Telegram</span>
+            </button>
         </div>
     </nav>
 
-    <header class="hero">
-        <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
-            <div class="badge">MT6833 Unified Developer</div>
-            <h1>Premium <span class="gradient-text">Custom ROMs</span></h1>
-            <p>Unleash the true potential of your POCO M4 Pro 5G / Redmi Note 11 Series (Evergo, Evergreen, Opal). Explore my handcrafted ROM ports with exclusive features and top-tier stability.</p>
-            <div class="cta-group">
-                <a href="#portfolio" class="primary-btn">Explore Portfolio</a>
+    <main id="home">
+        <header class="hero">
+            <div class="hero-content" data-aos="fade-up" data-aos-duration="800">
+                <div class="badge">CDN-Pacman ROMs</div>
+                <h1>CDN-Pacman <span class="gradient-text">ROMs</span></h1>
             </div>
-            <div class="specs">
-                <span>Android 13 - 16</span>
-                <span class="dot">•</span>
-                <span>HyperOS &amp; MIUI</span>
-                <span class="dot">•</span>
-                <span>Hybrid ROMs</span>
+        </header>
+
+        <section id="latest" class="portfolio-section latest-section">
+            <div class="section-title"><h2>Latest <span class="gradient-text">Release</span></h2></div>
+            <div class="latest-release-container" id="latest-container"></div>
+        </section>
+
+        <section id="portfolio" class="portfolio-section">
+            <div class="section-title"><h2><span class="gradient-text">ROMs</span></h2></div>
+            <div class="portfolio-grid" id="rom-container"></div>
+        </section>
+
+        <section id="gallery" class="gallery-section" style="display:none">
+            <div class="section-title">
+                <h2><span class="gradient-text" id="gallery-title">ROM</span> Screenshots</h2>
             </div>
-        </div>
-        <div class="hero-image" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="200">
-            <a href="https://github.com/sponsors/ketanvats" target="_blank" class="sponsor-link">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="Sponsor on GitHub" class="floating-icon">
-                <div class="sponsor-tooltip">Support my work!</div>
-            </a>
-        </div>
-    </header>
-
-    <section id="latest" class="portfolio-section" style="padding-bottom: 0;">
-        <div class="section-title" data-aos="fade-up">
-            <h2>Latest <span class="gradient-text">Release</span></h2>
-            <p>The newest ROM port for the MT6833 community.</p>
-        </div>
-        <div class="latest-release-container" id="latest-container">
-            <!-- Latest ROM will be injected here -->
-        </div>
-    </section>
-
-    <section id="portfolio" class="portfolio-section">
-        <div class="section-title" data-aos="fade-up">
-            <h2>The <span class="gradient-text">Collection</span></h2>
-            <p>Browse through all available ROMs crafted for the community.</p>
-        </div>
-        
-        <div class="portfolio-grid" id="rom-container">
-            <!-- ROM Cards will be dynamically injected here via script.js -->
-        </div>
-    </section>
-
-    <section id="gallery" class="gallery-section" style="display: none;">
-        <div class="section-title">
-            <h2><span class="gradient-text" id="gallery-title">ROM</span> Screenshots</h2>
-            <p>A glimpse into the UI.</p>
-        </div>
-
-        <div class="swiper gallery-slider" id="gallery-swiper">
-            <div class="swiper-wrapper" id="gallery-container">
-                <!-- Images will be injected here -->
+            <div class="swiper gallery-slider" id="gallery-swiper">
+                <div class="swiper-wrapper" id="gallery-container"></div>
+                <div class="swiper-pagination"></div>
             </div>
-            <div class="swiper-pagination"></div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <footer>
         <div class="footer-content">
-            <div class="footer-logo">Dronxtu<span>ROMs</span></div>
-            <p>Created by Ketan | Dronxtu for the MT6833 Community</p>
-            <div class="social-links">
-                <a href="https://t.me/mt6833unified_updates" target="_blank">Updates Channel</a>
-                <a href="https://t.me/mt6833unified_chat" target="_blank">Community Chat</a>
-            </div>
-        </div>
-        <div class="copyright">
-            &copy; <span id="year"></span> Ketan | Dronxtu. All rights reserved.
+            <div class="footer-logo">CDN-Pacman <span>ROMs</span></div>
+            <div class="maintainer">Maintainer: <a href="https://github.com/cdn-pacman" target="_blank" rel="noopener noreferrer">cdn-pacman (GitHub) ↗</a></div>
         </div>
     </footer>
 
+    <dialog id="telegram-dialog" class="telegram-dialog" aria-labelledby="telegram-title">
+        <button type="button" class="telegram-close" id="close-telegram" aria-label="Close">×</button>
+        <div class="telegram-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M21.7 3.3a1.2 1.2 0 0 0-1.25-.18L2.7 10.1a1.25 1.25 0 0 0 .1 2.35l4.4 1.5 1.5 4.65a1.25 1.25 0 0 0 2.2.38l2.55-3.1 4.35 3.2a1.25 1.25 0 0 0 1.95-.78l2.3-13.75a1.25 1.25 0 0 0-.35-1.25ZM9 13.2l8.4-6.15-6.9 7.5-.3 2.55L9 13.2Z"/></svg>
+        </div>
+        <h2 id="telegram-title">Telegram</h2>
+        <a class="telegram-option" href="https://t.me/pacman_ports" target="_blank" rel="noopener noreferrer"><span>Release Group</span><span aria-hidden="true">↗</span></a>
+        <a class="telegram-option" href="https://t.me/nikki_chats" target="_blank" rel="noopener noreferrer"><span>Maintainer Support Group</span><span aria-hidden="true">↗</span></a>
+    </dialog>
+
     <div id="imageModal" class="modal">
-        <span class="close-modal">&times;</span>
-        <img class="modal-content" id="modalImg">
+        <button class="close-modal" type="button" aria-label="Close screenshot">&times;</button>
+        <img class="modal-content" id="modalImg" alt="ROM screenshot">
     </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="script.js?v=20260906b"></script>
+    <script src="script.js?v=cdn-pacman-1"></script>
 </body>
 </html>
