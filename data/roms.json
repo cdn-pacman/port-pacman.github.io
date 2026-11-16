@@ -3,12 +3,26 @@
     "pacman": {
       "name": "Nothing Phone (2a)",
       "codename": "Pacman",
-      "roms": []
-    },
-    "pacman-plus": {
-      "name": "Nothing Phone (2a) Plus",
-      "codename": "Pacman Plus",
-      "roms": []
+      "roms": [
+        {
+          "id": "hyperos-1.0-alpha-v1",
+          "name": "HyperOS-1.0",
+          "version": "Alpha V1 (Beta Build)",
+          "android": "Android 14",
+          "build": "Alpha V1 (Beta Build)",
+          "securityPatch": "2024-11-01",
+          "device": "PACMAN · Nothing Phone (2a)",
+          "details": "OS: HyperOS 1\nDevice: PACMAN\nBuild: Alpha V1 (Beta Build)\nSecurity Patch: 2024-11-01",
+          "screenshotFolder": "assets/roms/pacman/hyperos-1.0-alpha-v1/",
+          "screenshots": [],
+          "downloads": [
+            {
+              "label": "Google Drive ROM folder",
+              "url": "https://drive.google.com/drive/folders/1R0qp8YUZM4X0YE7nkB34BSZ3ZIZtt2G5"
+            }
+          ]
+        }
+      ]
     }
   }
 }
