@@ -1,59 +1,105 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#050505">
-  <meta name="description" content="Custom ROM ports for the POCO M4 Pro 5G and Redmi Note 11 series by Dronxtu.">
-  <title>DronxtuROMs — Custom ROM Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dronxtu's ROM Portfolio - MT6833</title>
+    <meta name="description" content="Discover the ultimate custom ROMs for POCO M4 Pro 5G and Redmi Note 11 Series. Crafted by Ketan | Dronxtu.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style.css?v=20260906b">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
-  <nav class="topbar" aria-label="Main navigation">
-    <a class="logo" href="#home">Dronxtu<span>ROMs</span></a>
-    <div class="nav-links">
-      <a href="#portfolio">My ROMs</a>
-      <a class="nav-button" href="https://t.me/mt6833unified_updates" target="_blank" rel="noopener noreferrer">Telegram channel <span aria-hidden="true">↗</span></a>
-    </div>
-  </nav>
+    <nav>
+        <div class="logo">Dronxtu<span>ROMs</span></div>
+        <div class="nav-links">
+            <a href="#portfolio">My ROMs</a>
+            <a href="https://t.me/mt6833unified_updates" target="_blank" class="nav-btn">Telegram Channel</a>
+        </div>
+    </nav>
 
-  <main id="home">
     <header class="hero">
-      <div class="hero-copy">
-        <div class="eyebrow"><span class="pulse"></span> MT6833 UNIFIED DEVELOPER</div>
-        <h1>Premium<br><span class="gradient-text">Custom ROMs</span></h1>
-        <p>Explore custom ROM ports for POCO M4 Pro 5G and Redmi Note 11 series — Evergo, Evergreen, and Opal. Built for the community, with screenshots and release details in one place.</p>
-        <div class="hero-actions"><a class="primary-button" href="#portfolio">Explore portfolio <span aria-hidden="true">↓</span></a><a class="text-button" href="https://t.me/mt6833unified_chat" target="_blank" rel="noopener noreferrer">Join the community ↗</a></div>
-        <div class="specs"><span>Android 13–16</span><i>•</i><span>HyperOS &amp; MIUI</span><i>•</i><span>Hybrid ROMs</span></div>
-      </div>
-      <a class="github-orb" href="https://github.com/cdn-pacman" target="_blank" rel="noopener noreferrer" aria-label="Visit GitHub"><span>GH</span><small>OPEN SOURCE<br>COMMUNITY</small></a>
-      <div class="hero-glow" aria-hidden="true"></div>
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+            <div class="badge">MT6833 Unified Developer</div>
+            <h1>Premium <span class="gradient-text">Custom ROMs</span></h1>
+            <p>Unleash the true potential of your POCO M4 Pro 5G / Redmi Note 11 Series (Evergo, Evergreen, Opal). Explore my handcrafted ROM ports with exclusive features and top-tier stability.</p>
+            <div class="cta-group">
+                <a href="#portfolio" class="primary-btn">Explore Portfolio</a>
+            </div>
+            <div class="specs">
+                <span>Android 13 - 16</span>
+                <span class="dot">•</span>
+                <span>HyperOS &amp; MIUI</span>
+                <span class="dot">•</span>
+                <span>Hybrid ROMs</span>
+            </div>
+        </div>
+        <div class="hero-image" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="200">
+            <a href="https://github.com/sponsors/ketanvats" target="_blank" class="sponsor-link">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="Sponsor on GitHub" class="floating-icon">
+                <div class="sponsor-tooltip">Support my work!</div>
+            </a>
+        </div>
     </header>
 
-    <section class="section latest-section" id="latest">
-      <div class="section-heading"><div class="eyebrow">FRESH FROM THE COMMUNITY</div><h2>Latest <span class="gradient-text">release</span></h2><p>The newest ROM port for the MT6833 community.</p></div>
-      <div id="latest-container" class="latest-container"></div>
+    <section id="latest" class="portfolio-section" style="padding-bottom: 0;">
+        <div class="section-title" data-aos="fade-up">
+            <h2>Latest <span class="gradient-text">Release</span></h2>
+            <p>The newest ROM port for the MT6833 community.</p>
+        </div>
+        <div class="latest-release-container" id="latest-container">
+            <!-- Latest ROM will be injected here -->
+        </div>
     </section>
 
-    <section class="section" id="portfolio">
-      <div class="section-heading"><div class="eyebrow">ROM PORTFOLIO</div><h2>The <span class="gradient-text">collection</span></h2><p>Browse ROM ports, release details, and screenshots.</p></div>
-      <div id="rom-container" class="portfolio-grid" aria-live="polite"></div>
+    <section id="portfolio" class="portfolio-section">
+        <div class="section-title" data-aos="fade-up">
+            <h2>The <span class="gradient-text">Collection</span></h2>
+            <p>Browse through all available ROMs crafted for the community.</p>
+        </div>
+        
+        <div class="portfolio-grid" id="rom-container">
+            <!-- ROM Cards will be dynamically injected here via script.js -->
+        </div>
     </section>
-  </main>
 
-  <footer>
-    <div class="footer-main"><a class="logo" href="#home">Dronxtu<span>ROMs</span></a><p>Custom ROM ports for the MT6833 community.</p><div class="footer-links"><a href="https://t.me/mt6833unified_updates" target="_blank" rel="noopener noreferrer">Updates channel ↗</a><a href="https://t.me/mt6833unified_chat" target="_blank" rel="noopener noreferrer">Community chat ↗</a></div></div>
-    <div class="copyright">© <span id="year"></span> DronxtuROMs · Community project</div>
-  </footer>
+    <section id="gallery" class="gallery-section" style="display: none;">
+        <div class="section-title">
+            <h2><span class="gradient-text" id="gallery-title">ROM</span> Screenshots</h2>
+            <p>A glimpse into the UI.</p>
+        </div>
 
-  <dialog id="gallery-dialog" class="gallery-dialog" aria-label="ROM screenshots">
-    <div class="gallery-top"><div><div class="eyebrow">SCREENSHOT GALLERY</div><h2 id="gallery-title">ROM screenshots</h2></div><button id="close-gallery" class="icon-button" type="button" aria-label="Close gallery">×</button></div>
-    <div class="gallery-viewer"><button id="previous-image" class="gallery-arrow" type="button" aria-label="Previous image">‹</button><img id="gallery-image" alt="ROM screenshot"><button id="next-image" class="gallery-arrow" type="button" aria-label="Next image">›</button></div>
-    <div class="gallery-caption"><span id="gallery-count"></span><span>Use ← / → keys to browse</span></div>
-  </dialog>
+        <div class="swiper gallery-slider" id="gallery-swiper">
+            <div class="swiper-wrapper" id="gallery-container">
+                <!-- Images will be injected here -->
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Dronxtu<span>ROMs</span></div>
+            <p>Created by Ketan | Dronxtu for the MT6833 Community</p>
+            <div class="social-links">
+                <a href="https://t.me/mt6833unified_updates" target="_blank">Updates Channel</a>
+                <a href="https://t.me/mt6833unified_chat" target="_blank">Community Chat</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; <span id="year"></span> Ketan | Dronxtu. All rights reserved.
+        </div>
+    </footer>
+
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js?v=20260906b"></script>
 </body>
 </html>
