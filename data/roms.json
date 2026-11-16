@@ -1,39 +1,14 @@
 {
-  "siteName": "AxionOS Official Downloads",
   "devices": {
-    "Pacman": {
+    "pacman": {
       "name": "Nothing Phone (2a)",
       "codename": "Pacman",
-      "description": "MediaTek Dimensity 7200 Pro · Codename: Pacman",
-      "maintainer": "AxionOS Team",
-      "builds": [
-        {
-          "version": "Alpha V1",
-          "android": "Android 14",
-          "securityPatch": "2024-11-01",
-          "date": "ADD RELEASE DATE",
-          "type": "Fastboot Only",
-          "summary": "Replace this text with your build notes.",
-          "downloadUrl": "https://drive.google.com/file/d/16TX595e2qt_dst56D91n0KKZOdN0NStT/view?usp=drivesdk",
-          "changelogUrl": "",
-          "sourceUrl": "https://github.com/AxionOS",
-          "status": "DEMO DATA"
-        }
-      ]
+      "roms": []
     },
-    "Pong": {
-      "name": "Nothing Phone (2)",
-      "codename": "Pong",
-      "description": "Nothing Phone (2) · Codename: Pong",
-      "maintainer": "AxionOS Team",
-      "builds": []
-    },
-    "Spacewar": {
-      "name": "POCO F4",
-      "codename": "Spacewar",
-      "description": "POCO F4 · Codename: Spacewar",
-      "maintainer": "AxionOS Team",
-      "builds": []
+    "pacman-plus": {
+      "name": "Nothing Phone (2a) Plus",
+      "codename": "Pacman Plus",
+      "roms": []
     }
   }
 }
