@@ -1,64 +1,184 @@
-/* Pacman-only ROM popup. Screenshots are shown only in a dedicated swipeable viewer. */
+/* Accessible, compact ROM detail modal with three sections and touch navigation. */
 (() => {
   const REPO = "cdn-pacman/port-pacman.github.io";
   const CATALOG = "data/roms.json";
   const dialog = document.getElementById("rom-dialog");
-  const list = document.getElementById("rom-list");
+  const panel = document.getElementById("rom-panel");
   const title = document.getElementById("rom-dialog-title");
   const subtitle = document.getElementById("rom-dialog-device");
-  if (!dialog || !list || !title || !subtitle) return;
+  if (!dialog || !panel || !title || !subtitle) return;
 
-  const make = (tag, cls, text) => { const el=document.createElement(tag); if(cls)el.className=cls; if(text!==undefined)el.textContent=text; return el; };
-  const safeUrl = (value) => { try { const u=new URL(value,document.baseURI); return ["https:","http:"].includes(u.protocol)?u.href:""; } catch { return ""; } };
-  const showMessage = (text, cls="catalog-empty") => list.replaceChildren(make("p",cls,text));
+  const tabs = [...dialog.querySelectorAll("[data-rom-tab]")];
+  const tabNames = tabs.map((tab) => tab.dataset.romTab);
+  const safeUrl = (value) => {
+    try { const url = new URL(value, document.baseURI); return ["https:", "http:"].includes(url.protocol) ? url.href : ""; }
+    catch { return ""; }
+  };
+  const el = (tag, className, text) => {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text !== undefined) node.textContent = text;
+    return node;
+  };
 
-  const viewer=document.createElement("dialog");
-  viewer.className="screenshot-viewer";
-  viewer.setAttribute("aria-label","ROM screenshot viewer");
-  viewer.innerHTML='<span class="viewer-swipe-hint">SWIPE TO BROWSE</span><button class="viewer-close" type="button" aria-label="Close screenshot">×</button><button class="viewer-prev" type="button" aria-label="Previous screenshot">‹</button><img class="viewer-image" alt="ROM screenshot"><button class="viewer-next" type="button" aria-label="Next screenshot">›</button><div class="viewer-count" aria-live="polite"></div>';
-  document.body.append(viewer);
-  const viewerImage=viewer.querySelector(".viewer-image"),viewerCount=viewer.querySelector(".viewer-count");
-  let galleryUrls=[],galleryIndex=0,galleryName="ROM",touchStartX=0,touchStartY=0;
-  function showImage(index){if(!galleryUrls.length)return;galleryIndex=(index+galleryUrls.length)%galleryUrls.length;viewerImage.src=galleryUrls[galleryIndex];viewerImage.alt=`${galleryName} screenshot ${galleryIndex+1}`;viewerCount.textContent=`${galleryIndex+1} / ${galleryUrls.length}`;}
-  function openViewer(urls,name){galleryUrls=urls;galleryName=name||"ROM";showImage(0);if(!viewer.open)viewer.showModal();}
-  viewer.querySelector(".viewer-close").addEventListener("click",()=>viewer.close());
-  viewer.querySelector(".viewer-prev").addEventListener("click",()=>showImage(galleryIndex-1));
-  viewer.querySelector(".viewer-next").addEventListener("click",()=>showImage(galleryIndex+1));
-  viewer.addEventListener("click",event=>{if(event.target===viewer)viewer.close();});
-  viewer.addEventListener("touchstart",event=>{if(event.changedTouches.length){touchStartX=event.changedTouches[0].clientX;touchStartY=event.changedTouches[0].clientY;}},{passive:true});
-  viewer.addEventListener("touchend",event=>{if(!event.changedTouches.length)return;const dx=event.changedTouches[0].clientX-touchStartX,dy=event.changedTouches[0].clientY-touchStartY;if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy))showImage(galleryIndex+(dx<0?1:-1));},{passive:true});
-  document.addEventListener("keydown",event=>{if(!viewer.open)return;if(event.key==="ArrowLeft")showImage(galleryIndex-1);if(event.key==="ArrowRight")showImage(galleryIndex+1);});
+  let roms = [];
+  let currentIndex = 0;
+  let currentTab = "about";
+  let touchStartX = 0;
+  let touchStartY = 0;
 
-  async function screenshotsFor(rom){
-    const folder=String(rom.screenshotFolder||"").replace(/^\/+|\/+$/g,"");
-    if(!folder)return Array.isArray(rom.screenshots)?rom.screenshots.map(safeUrl).filter(Boolean):[];
-    try{const path=folder.split("/").map(encodeURIComponent).join("/");const response=await fetch(`https://api.github.com/repos/${REPO}/contents/${path}?ref=main`,{headers:{Accept:"application/vnd.github+json"},cache:"no-store"});if(!response.ok)throw new Error("Folder listing unavailable");const files=await response.json();const found=Array.isArray(files)?files.filter(file=>file.type==="file"&&/\.(png|jpe?g|webp|gif|avif)$/i.test(file.name)).sort((a,b)=>a.name.localeCompare(b.name)).map(file=>safeUrl(file.download_url)).filter(Boolean):[];if(found.length)return found;}catch{/* use explicitly listed images below */}
-    return Array.isArray(rom.screenshots)?rom.screenshots.map(path=>safeUrl(/^https?:\/\//i.test(path)?path:`${folder}/${path}`)).filter(Boolean):[];
+  function selectTab(name) {
+    if (!tabNames.includes(name)) return;
+    currentTab = name;
+    tabs.forEach((tab) => {
+      const active = tab.dataset.romTab === name;
+      tab.classList.toggle("is-active", active);
+      tab.setAttribute("aria-selected", String(active));
+      tab.tabIndex = active ? 0 : -1;
+    });
+    const activeTab = tabs.find((tab) => tab.dataset.romTab === name);
+    panel.setAttribute("aria-labelledby", activeTab.id);
+    renderPanel();
   }
 
-  async function renderRom(rom){
-    const card=make("article","catalog-rom-card"),details=make("div","catalog-rom-details");
-    details.append(make("h3","",rom.name||"Custom ROM"));
-    const tags=make("div","catalog-tags");[rom.version,rom.android].filter(Boolean).forEach(value=>tags.append(make("span","catalog-tag",value)));if(tags.childElementCount)details.append(tags);
-    const specs=make("dl","catalog-specs");[["OS",rom.os],["Device",rom.device],["Build",rom.build],["Security patch",rom.securityPatch]].filter(([,v])=>v).forEach(([k,v])=>specs.append(make("dt","",k),make("dd","",v)));if(specs.childElementCount)details.append(specs);
-    if(rom.details)details.append(make("p","",rom.details));card.append(details);
-
-    const images=await screenshotsFor(rom);
-    if(images.length){
-      const gallery=make("div","catalog-screenshot-gallery");
-      const button=make("button","view-screenshots-button",`View screenshots · ${images.length}`);
-      button.type="button";
-      button.addEventListener("click",()=>openViewer(images,rom.name));
-      gallery.append(button);
-      card.append(gallery);
-    }else card.append(make("p","screenshot-hint",`No screenshots uploaded yet. Add PNG/JPG/WebP images to ${rom.screenshotFolder||"the ROM screenshot folder"}.`));
-
-    const downloads=make("div","catalog-downloads");
-    (Array.isArray(rom.downloads)?rom.downloads:[]).forEach(asset=>{const href=safeUrl(asset.url);if(!href)return;const link=make("a","catalog-download-button",`Download ${asset.label||asset.part||"ROM"}${asset.size?` · ${asset.size}`:""}`);link.href=href;link.target="_blank";link.rel="noopener noreferrer";downloads.append(link);});
-    if(downloads.childElementCount)card.append(downloads);
-    return card;
+  function showRom(index) {
+    if (!roms.length) return;
+    currentIndex = (index + roms.length) % roms.length;
+    const rom = roms[currentIndex];
+    title.textContent = rom.name || "Custom ROM";
+    const buildLabel = rom.version || rom.build || "ROM build";
+    const maintainers = rom.maintainer || "CDN-Pacman";
+    const testers = Array.isArray(rom.testers) ? rom.testers.join(", ") : rom.testers;
+    subtitle.textContent = `${buildLabel} · Maintainer: ${maintainers}${testers ? ` · Testers: ${testers}` : ""}`;
+    renderPanel();
   }
 
-  document.addEventListener("click",async event=>{const button=event.target.closest(".device-rom-button[data-device='pacman']");if(!button)return;event.preventDefault();event.stopPropagation();title.textContent="Nothing Phone (2a) ROMs";subtitle.textContent="Codename: PACMAN · MediaTek Dimensity 7200 Pro";showMessage("Loading Pacman ROMs…","loading-state");if(!dialog.open)dialog.showModal();button.disabled=true;try{const response=await fetch(`${CATALOG}?v=${Date.now()}`,{cache:"no-store"});if(!response.ok)throw new Error("Catalog unavailable");const catalog=await response.json();const roms=catalog?.devices?.pacman?.roms;if(!Array.isArray(roms)||!roms.length){showMessage("No ROMs have been added to the Pacman catalog yet.");return;}list.replaceChildren(...await Promise.all(roms.map(renderRom)));}catch{showMessage("ROM catalog load nahi hua. Internet check karke dobara try karein.");}finally{button.disabled=false;}},true);
-  dialog.querySelector("[data-close-dialog='rom-dialog']")?.addEventListener("click",()=>dialog.close());dialog.addEventListener("click",event=>{if(event.target===dialog)dialog.close();});
+  function renderAbout(rom) {
+    const wrapper = el("div", "rom-about-content");
+    const summary = el("p", "rom-summary", rom.details || "Custom ROM for Nothing Phone (2a), codename PACMAN.");
+    wrapper.append(summary);
+    const specs = el("div", "rom-spec-grid");
+    [["Android", rom.android], ["Device", rom.device || "Nothing Phone (2a) · PACMAN"], ["Build", rom.build || rom.version], ["Security patch", rom.securityPatch]].filter(([, value]) => value).forEach(([label, value]) => {
+      const item = el("article", "rom-spec");
+      item.append(el("span", "rom-spec-label", label), el("strong", "rom-spec-value", value));
+      specs.append(item);
+    });
+    if (specs.childElementCount) wrapper.append(specs);
+    return wrapper;
+  }
+
+  async function getScreenshots(rom) {
+    const folder = String(rom.screenshotFolder || "").replace(/^\/+|\/+$/g, "");
+    if (folder) {
+      try {
+        const path = folder.split("/").map(encodeURIComponent).join("/");
+        const response = await fetch(`https://api.github.com/repos/${REPO}/contents/${path}?ref=main`, { headers: { Accept: "application/vnd.github+json" } });
+        if (response.ok) {
+          const files = await response.json();
+          const urls = files.filter((file) => file.type === "file" && /\.(png|jpe?g|webp|gif)$/i.test(file.name)).map((file) => safeUrl(file.download_url)).filter(Boolean);
+          if (urls.length) return urls;
+        }
+      } catch { /* Use any catalog-provided images as a fallback. */ }
+    }
+    return Array.isArray(rom.screenshots) ? rom.screenshots.map((path) => safeUrl(/^https?:\/\//i.test(path) ? path : `${folder}/${path}`)).filter(Boolean) : [];
+  }
+
+  async function renderScreenshots(rom) {
+    panel.replaceChildren(el("p", "rom-loading", "Loading screenshots…"));
+    const urls = await getScreenshots(rom);
+    if (!roms.length || roms[currentIndex] !== rom || currentTab !== "screenshots") return;
+    if (!urls.length) {
+      panel.replaceChildren(el("div", "rom-empty-state", "Screenshots for this build haven’t been added yet."));
+      return;
+    }
+    const grid = el("div", "rom-screenshot-grid");
+    urls.forEach((url, index) => {
+      const image = el("img", "rom-screenshot");
+      image.src = url;
+      image.alt = `${rom.name || "ROM"} screenshot ${index + 1}`;
+      image.loading = "lazy";
+      image.addEventListener("click", () => window.open(url, "_blank", "noopener,noreferrer"));
+      grid.append(image);
+    });
+    panel.replaceChildren(grid);
+  }
+
+  function renderDownloads(rom) {
+    const downloads = (Array.isArray(rom.downloads) ? rom.downloads : []).map((asset) => ({ asset, url: safeUrl(asset.url) })).filter(({ url }) => url);
+    if (!downloads.length) {
+      panel.replaceChildren(el("div", "rom-empty-state", "Download link for this build will be added soon."));
+      return;
+    }
+    const list = el("div", "rom-download-list");
+    downloads.forEach(({ asset, url }) => {
+      const link = el("a", "rom-download-action", `↓  Download ${asset.label || asset.part || "ROM"}${asset.size ? ` · ${asset.size}` : ""}`);
+      link.href = url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      list.append(link);
+    });
+    panel.replaceChildren(list);
+  }
+
+  function renderPanel() {
+    const rom = roms[currentIndex];
+    if (!rom) return;
+    if (currentTab === "about") panel.replaceChildren(renderAbout(rom));
+    else if (currentTab === "screenshots") void renderScreenshots(rom);
+    else renderDownloads(rom);
+  }
+
+  async function loadCatalog() {
+    panel.replaceChildren(el("p", "rom-loading", "Loading ROM information…"));
+    try {
+      const response = await fetch(`${CATALOG}?v=1`, { cache: "no-store" });
+      if (!response.ok) throw new Error("Catalog unavailable");
+      const data = await response.json();
+      roms = Array.isArray(data.devices?.pacman?.roms) ? data.devices.pacman.roms : [];
+      if (!roms.length) throw new Error("No ROMs published");
+      showRom(0);
+      selectTab("about");
+    } catch {
+      panel.replaceChildren(el("div", "rom-empty-state", "ROM information is temporarily unavailable. Please try again later."));
+    }
+  }
+
+  document.addEventListener("click", (event) => {
+    const button = event.target.closest(".device-rom-button[data-device='pacman']");
+    if (!button) return;
+    event.preventDefault();
+    event.stopPropagation();
+    if (!dialog.open) dialog.showModal();
+    void loadCatalog();
+  });
+  tabs.forEach((tab) => tab.addEventListener("click", () => selectTab(tab.dataset.romTab)));
+  dialog.querySelector("[data-close-dialog='rom-dialog']")?.addEventListener("click", () => dialog.close());
+  dialog.addEventListener("click", (event) => { if (event.target === dialog) dialog.close(); });
+  dialog.addEventListener("touchstart", (event) => {
+    if (!event.changedTouches.length) return;
+    touchStartX = event.changedTouches[0].clientX;
+    touchStartY = event.changedTouches[0].clientY;
+  }, { passive: true });
+  dialog.addEventListener("touchend", (event) => {
+    if (!event.changedTouches.length) return;
+    const dx = event.changedTouches[0].clientX - touchStartX;
+    const dy = event.changedTouches[0].clientY - touchStartY;
+    if (Math.max(Math.abs(dx), Math.abs(dy)) < 55) return;
+    if (Math.abs(dx) > Math.abs(dy)) {
+      if (roms.length > 1) showRom(currentIndex + (dx < 0 ? 1 : -1));
+    } else {
+      const tabIndex = tabNames.indexOf(currentTab);
+      const direction = dy < 0 ? 1 : -1;
+      selectTab(tabNames[(tabIndex + direction + tabNames.length) % tabNames.length]);
+    }
+  }, { passive: true });
+  dialog.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowUp" || event.key === "ArrowDown") {
+      event.preventDefault();
+      const index = tabNames.indexOf(currentTab);
+      selectTab(tabNames[(index + (event.key === "ArrowDown" ? 1 : -1) + tabNames.length) % tabNames.length]);
+    } else if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+      if (roms.length > 1) showRom(currentIndex + (event.key === "ArrowRight" ? 1 : -1));
+    }
+  });
 })();

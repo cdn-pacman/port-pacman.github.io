@@ -1,0 +1,28 @@
+/* ROM popup refresh: compact responsive glass tabs with clear swipe affordances. */
+.pacman-brand{display:inline-flex!important;align-items:center;gap:10px;text-transform:none!important;white-space:nowrap}
+.pacman-brand .brand-name{font-size:clamp(16px,2vw,22px);font-weight:800;letter-spacing:-.045em;color:#f7f7f8}
+.pacman-brand em{font-style:normal;background:linear-gradient(100deg,#ff6048,#ffba64,#ff493b,#ffb75a);background-size:230% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:fire-flow 3s linear infinite,fire-glow 1.5s ease-in-out infinite alternate}
+.pacman-brand .brand-status-dot{width:9px;height:9px;flex:0 0 9px;border-radius:50%;background:#ff3449;box-shadow:0 0 9px #ff243c,0 0 18px rgba(255,45,65,.72);animation:brand-dot-pulse 1.5s ease-in-out infinite alternate}
+@keyframes brand-dot-pulse{to{box-shadow:0 0 13px #ff3449,0 0 26px rgba(255,45,65,.9)}}
+.rom-experience{width:min(92vw,680px)!important;max-width:680px!important;max-height:min(86dvh,760px)!important;overflow:hidden!important;padding:clamp(20px,4vw,34px)!important;border-radius:26px!important;display:none}
+.rom-experience[open]{display:flex!important;flex-direction:column;gap:0}
+.rom-dialog-head{padding:0 44px 20px 0}
+.rom-dialog-head .rom-kicker{display:inline-flex;align-items:center;gap:8px;margin-bottom:8px;color:#b5b5c2;font:600 10px 'DM Mono',monospace;letter-spacing:.16em;text-transform:uppercase}
+.rom-dialog-head .rom-kicker::before{content:"";width:7px;height:7px;border-radius:50%;background:#ff4050;box-shadow:0 0 12px rgba(255,54,71,.8)}
+.rom-dialog-head h2{margin:0;font:800 clamp(27px,5vw,39px)/1.08 Outfit,Inter,sans-serif;letter-spacing:-.045em;background:linear-gradient(100deg,#fff1d2,#ffbb60,#ff594b,#c28cff,#ffb45c);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:fire-flow 4s linear infinite}
+.rom-maintainers{margin:9px 0 0!important;color:#aaa9b4!important;font:500 11px/1.5 'DM Mono',monospace!important;letter-spacing:.02em}
+.rom-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;padding:6px;margin:0 0 18px;border:1px solid rgba(255,255,255,.11);border-radius:16px;background:rgba(255,255,255,.035);flex:0 0 auto}
+.rom-tab{min-height:42px;padding:9px 8px;border:1px solid transparent!important;border-radius:11px!important;background:transparent!important;color:#aaa9b4!important;font:700 12px Inter,system-ui,sans-serif;cursor:pointer}
+.rom-tab.is-active{border-color:rgba(255,255,255,.14)!important;background:linear-gradient(135deg,rgba(255,255,255,.12),rgba(255,255,255,.045))!important;color:#fff!important;box-shadow:inset 0 1px rgba(255,255,255,.08),0 0 20px rgba(255,75,73,.09)!important}
+.rom-panel{min-height:170px;max-height:min(48dvh,440px);overflow:auto;overscroll-behavior:contain;padding:2px 3px 4px;flex:1 1 auto;touch-action:pan-y}
+.rom-about-content{display:grid;gap:16px}.rom-summary{margin:0;color:#d4d2d9;font-size:14px;line-height:1.75;white-space:pre-line}
+.rom-spec-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.rom-spec{min-width:0;padding:13px;border:1px solid rgba(255,255,255,.1);border-radius:15px;background:rgba(255,255,255,.045)}.rom-spec-label{display:block;margin-bottom:6px;color:#92909c;font:500 10px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.08em}.rom-spec-value{display:block;color:#f3f1f5;font-size:12px;line-height:1.5;overflow-wrap:anywhere}
+.rom-screenshot-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.rom-screenshot{display:block;width:100%;max-height:340px;aspect-ratio:9/16;object-fit:cover;border:1px solid rgba(255,255,255,.14);border-radius:15px;background:rgba(255,255,255,.04);cursor:zoom-in}
+.rom-download-list{display:grid;gap:10px}.rom-download-action{display:flex;align-items:center;justify-content:center;min-height:52px;padding:12px 18px;border:1px solid rgba(255,255,255,.17);border-radius:15px;background:linear-gradient(120deg,rgba(255,255,255,.10),rgba(255,255,255,.035));color:#fff;text-align:center;text-decoration:none;font-size:13px;font-weight:750;box-shadow:inset 0 1px rgba(255,255,255,.08);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.rom-download-action:hover{transform:translateY(-2px);border-color:rgba(83,178,255,.65);box-shadow:0 0 22px rgba(38,147,255,.25),inset 0 1px rgba(255,255,255,.1)}
+.rom-empty-state,.rom-loading{display:grid;min-height:150px;place-items:center;margin:0;padding:24px;color:#a8a6b0;text-align:center;font-size:13px;line-height:1.7}
+.rom-swipe-hint{margin:14px 0 0;color:#777681;text-align:center;font:9px 'DM Mono',monospace;letter-spacing:.045em;flex:0 0 auto}
+#rom-dialog .dialog-close{z-index:2;top:17px;right:17px}
+#rom-dialog::backdrop{background:rgba(2,5,12,.54)!important;backdrop-filter:blur(16px) brightness(.66) saturate(125%)!important;-webkit-backdrop-filter:blur(16px) brightness(.66) saturate(125%)!important}
+@media(max-width:520px){.pacman-brand{gap:7px}.pacman-brand .brand-name{font-size:15px}.pacman-brand .brand-status-dot{width:7px;height:7px;flex-basis:7px}.rom-experience{width:calc(100vw - 24px)!important;max-height:calc(100dvh - 28px)!important;padding:20px 16px 15px!important;border-radius:21px!important}.rom-dialog-head{padding-bottom:15px}.rom-dialog-head h2{font-size:29px}.rom-tabs{gap:4px;padding:4px;margin-bottom:13px}.rom-tab{min-height:40px;padding:8px 4px;font-size:11px}.rom-panel{max-height:54dvh;min-height:150px}.rom-spec-grid{gap:7px}.rom-spec{padding:10px}.rom-swipe-hint{font-size:8px}}
+@media(prefers-reduced-motion:reduce){.pacman-brand em,.pacman-brand .brand-status-dot,.rom-dialog-head h2{animation:none!important}}
