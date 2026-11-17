@@ -1,0 +1,28 @@
+/* Follow-up polish: horizontal header controls, vivid blue button glow, unified glass ROM popup. */
+.topbar,.header-actions{display:flex!important;flex-direction:row!important;align-items:center!important}
+.header-actions{justify-content:flex-end!important;gap:12px!important;flex-wrap:nowrap!important}
+.notification-trigger,.telegram-trigger{flex:0 0 46px!important;display:inline-grid!important;place-items:center!important;writing-mode:horizontal-tb!important;transform:none;}
+.notification-trigger svg,.telegram-trigger svg{display:block!important;flex:none!important;width:22px!important;height:22px!important}
+.notification-trigger:hover,.telegram-trigger:hover{transform:translateY(-2px)!important}
+.hero-device-badge{display:inline-flex!important;align-items:center;justify-content:center;gap:10px;margin:0 auto 24px;padding:13px 20px;border:1px solid rgba(255,255,255,.16);border-radius:16px;background:rgba(255,255,255,.055);color:#f7f7f8;backdrop-filter:blur(18px) saturate(145%);-webkit-backdrop-filter:blur(18px) saturate(145%);box-shadow:inset 0 1px rgba(255,255,255,.08),0 10px 35px rgba(0,0,0,.2)}
+.hero-device-badge .status-dot{flex:0 0 8px}
+/* Make blue animated edge-glow visible on every clickable control. */
+button,.primary-button,.maintainer-link,.catalog-download-button,.view-screenshots-button{position:relative;isolation:isolate;transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease,background-color .22s ease}
+button:hover,.primary-button:hover,.maintainer-link:hover,.catalog-download-button:hover,.view-screenshots-button:hover{border-color:rgba(64,177,255,.78)!important;box-shadow:0 0 0 1px rgba(64,177,255,.28),0 0 14px rgba(0,145,255,.62),0 0 30px rgba(42,112,255,.42),inset 0 0 16px rgba(58,169,255,.14)!important;filter:saturate(1.2)}
+button::after,.primary-button::after,.maintainer-link::after,.catalog-download-button::after,.view-screenshots-button::after{content:"";position:absolute;inset:-2px;z-index:-1;border-radius:inherit;background:conic-gradient(from var(--glow-angle,0deg),transparent 0 32%,rgba(55,169,255,.8) 43%,rgba(115,91,255,.8) 52%,transparent 66%);opacity:0;filter:blur(8px);transition:opacity .2s ease;animation:blue-dora-glow 3.4s linear infinite}
+button:hover::after,.primary-button:hover::after,.maintainer-link:hover::after,.catalog-download-button:hover::after,.view-screenshots-button:hover::after{opacity:.9}
+@keyframes blue-dora-glow{to{--glow-angle:360deg}}
+@property --glow-angle{syntax:"<angle>";initial-value:0deg;inherits:false}
+.device-rom-button{min-height:48px!important;padding:12px 20px!important;border:1px solid rgba(255,255,255,.2)!important;border-radius:14px!important;background:linear-gradient(135deg,rgba(255,255,255,.105),rgba(255,255,255,.035))!important;color:#fff!important;font-weight:700!important;letter-spacing:.01em;box-shadow:inset 0 1px rgba(255,255,255,.12),0 8px 26px rgba(0,0,0,.2)!important;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.device-rom-button:hover{transform:translateY(-2px)!important;background:linear-gradient(135deg,rgba(51,157,255,.18),rgba(255,255,255,.055))!important}
+/* Make ROM and screenshot dialogs use the same blurred-glass surface as the site dialogs. */
+#rom-dialog,#release-dialog,#telegram-dialog,.screenshot-viewer{color:#f7f7f8!important;border:1px solid rgba(255,255,255,.22)!important;border-radius:26px!important;background:linear-gradient(145deg,rgba(25,27,36,.82),rgba(8,10,16,.76))!important;box-shadow:0 28px 100px rgba(0,0,0,.62),inset 0 1px rgba(255,255,255,.11),0 0 48px rgba(30,137,255,.12)!important;backdrop-filter:blur(28px) saturate(150%)!important;-webkit-backdrop-filter:blur(28px) saturate(150%)!important}
+#rom-dialog::backdrop,#release-dialog::backdrop,#telegram-dialog::backdrop,.screenshot-viewer::backdrop{background:rgba(2,5,12,.44)!important;backdrop-filter:blur(18px) brightness(.68) saturate(125%)!important;-webkit-backdrop-filter:blur(18px) brightness(.68) saturate(125%)!important}
+#rom-dialog[open],#release-dialog[open],#telegram-dialog[open]{animation:glass-dialog-in .26s cubic-bezier(.2,.8,.2,1) both}
+@keyframes glass-dialog-in{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+#rom-dialog .dialog-close,#release-dialog .dialog-close,#telegram-dialog .dialog-close{border:1px solid rgba(255,255,255,.17)!important;border-radius:12px!important;background:rgba(255,255,255,.07)!important;color:#fff!important}
+#rom-dialog .catalog-rom-card{border:1px solid rgba(255,255,255,.15)!important;border-radius:18px!important;background:rgba(255,255,255,.055)!important;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+#rom-dialog .catalog-download-button{border:1px solid rgba(255,255,255,.2)!important;border-radius:12px!important;background:rgba(255,255,255,.07)!important;color:#fff!important}
+#rom-dialog .view-screenshots-button{border:1px solid rgba(255,255,255,.2)!important;border-radius:12px!important;background:rgba(255,255,255,.07)!important;color:#fff!important}
+@media(max-width:600px){.header-actions{gap:9px!important}.notification-trigger,.telegram-trigger{flex-basis:42px!important}.hero-device-badge{padding:11px 15px;margin-bottom:19px}.device-rom-button{width:100%}#rom-dialog,#release-dialog,#telegram-dialog{width:min(92vw,560px)!important;max-height:86dvh!important}}
+@media(prefers-reduced-motion:reduce){button::after,.primary-button::after,.maintainer-link::after,.catalog-download-button::after,.view-screenshots-button::after{animation:none!important}}
