@@ -1,0 +1,9 @@
+/* Keep the visual style but reduce perpetual work on mobile/low-power devices. */
+.feature-image-link{animation:none!important;filter:none!important;translate:none!important;transform:translateZ(0);will-change:auto!important}
+.feature-image-link::before{animation:none!important;opacity:.34;transform:translateX(-115%)}
+.feature-image{content-visibility:auto}
+.library-rom-card{animation:none!important;will-change:auto!important}
+.pacman-brand em{animation:brand-spectrum 8s linear infinite!important;filter:none!important}
+.hero-actions .primary-button,.hero-actions .outline-button{animation:none!important}
+.hero-actions .primary-button::before,.hero-actions .outline-button::before{animation:none!important;opacity:.4}
+@media(prefers-reduced-motion:reduce){.pacman-brand em{animation:none!important}}

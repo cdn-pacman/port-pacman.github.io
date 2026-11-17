@@ -1,46 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="460" viewBox="0 0 1200 460" role="img" aria-labelledby="title desc">
   <title id="title">HyperOS for Nothing Phone (2a), by Pacman Port ROMs</title>
-  <desc id="desc">A teal, foggy forest release banner with a framed phone display.</desc>
+  <desc id="desc">Teal forest artwork and a framed phone display.</desc>
   <defs>
-    <linearGradient id="card" x1="0" y1="0" x2="1" y2=".72"><stop stop-color="#061b1b"/><stop offset=".38" stop-color="#426c6a"/><stop offset=".67" stop-color="#123535"/><stop offset="1" stop-color="#092526"/></linearGradient>
-    <radialGradient id="light" cx=".48" cy=".45" r=".62"><stop stop-color="#b7d4ca" stop-opacity=".6"/><stop offset=".55" stop-color="#8eb9b1" stop-opacity=".19"/><stop offset="1" stop-color="#8eb9b1" stop-opacity="0"/></radialGradient>
-    <linearGradient id="display" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#557875"/><stop offset=".28" stop-color="#244847"/><stop offset=".67" stop-color="#0c292a"/><stop offset="1" stop-color="#061719"/></linearGradient>
-    <linearGradient id="phone-glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff" stop-opacity=".28"/><stop offset=".4" stop-color="#c8e3df" stop-opacity=".07"/><stop offset="1" stop-color="#031212" stop-opacity=".2"/></linearGradient>
-    <linearGradient id="fog" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#e1eeee" stop-opacity="0"/><stop offset=".5" stop-color="#d5e0dc" stop-opacity=".32"/><stop offset="1" stop-color="#c1d3d0" stop-opacity="0"/></linearGradient>
-    <filter id="soft"><feGaussianBlur stdDeviation="34"/></filter>
-    <filter id="mist"><feGaussianBlur stdDeviation="14"/></filter>
-    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".72" numOctaves="2" seed="12"/><feColorMatrix values=".25 0 0 0 .4 .25 0 0 0 .52 .25 0 0 0 .48 0 0 0 .11 0"/></filter>
+    <linearGradient id="bg" x2="1" y2=".8"><stop stop-color="#071b1c"/><stop offset=".48" stop-color="#416967"/><stop offset="1" stop-color="#092526"/></linearGradient>
+    <linearGradient id="screen" x2="0" y2="1"><stop stop-color="#668681"/><stop offset=".5" stop-color="#193d3b"/><stop offset="1" stop-color="#061819"/></linearGradient>
+    <linearGradient id="mist" x2="0" y2="1"><stop stop-color="#d7e5df" stop-opacity="0"/><stop offset=".5" stop-color="#d7e5df" stop-opacity=".35"/><stop offset="1" stop-color="#d7e5df" stop-opacity="0"/></linearGradient>
     <clipPath id="screen-clip"><rect x="790" y="60" width="280" height="370" rx="48"/></clipPath>
-    <g id="pine" fill="#07191a">
-      <path d="M0 0 22 48 13 45 30 82 18 77 40 122 26 116 48 157H-48l22-41-14 6 22-45-12 5 17-37-9 3Z"/>
-      <path d="M0 11 22 48 11 43 30 82 15 75 40 122 23 113 48 157H-48l22-44-17 9 22-47-15 7 17-39-11 5Z" fill="#153b36" opacity=".55"/>
-      <path d="M0 19 14 48 7 45 22 77 12 73 30 112 18 108 37 143H-38l19-35-12 4 18-39-10 4 15-32-8 3Z" fill="#234b43" opacity=".3"/>
-      <path d="M0 0v157" stroke="#061415" stroke-width="3" opacity=".7"/>
-    </g>
+    <g id="tree" fill="#102a29"><path d="M0 0 23 48 12 44 31 82 17 76 41 122 25 115 49 158H-49l24-43-16 7 24-46-14 6 19-38-11 4Z"/><path d="M0 14 17 49 8 45 26 81 13 76 34 119 20 113 42 150H-42l20-37-14 6 20-43-13 6 16-33-9 4Z" fill="#285048" opacity=".55"/></g>
   </defs>
-  <rect x="0" y="0" width="1200" height="460" rx="44" fill="#10194a"/>
-  <rect x="8" y="8" width="1184" height="444" rx="40" fill="url(#card)"/>
-  <ellipse cx="585" cy="218" rx="460" ry="280" fill="url(#light)" filter="url(#soft)"/>
-  <path d="M10 320C180 270 285 310 420 258s223-34 365 20 238 28 399-16v190H10Z" fill="#071a1a" opacity=".28"/>
+  <rect width="1200" height="460" rx="44" fill="#10194a"/><rect x="8" y="8" width="1184" height="444" rx="40" fill="url(#bg)"/>
+  <ellipse cx="565" cy="180" rx="370" ry="200" fill="#c0d8cf" opacity=".13"/>
+  <path d="M10 320Q180 270 320 300T610 290T900 285T1190 295V452H10Z" fill="#061a1b" opacity=".6"/>
   <text x="70" y="194" fill="#fff" font-family="Arial,Helvetica,sans-serif" font-size="84" font-weight="700" letter-spacing="-3">HyperOS</text>
-  <text x="74" y="273" fill="#f5ffff" font-family="Arial,Helvetica,sans-serif" font-size="48" font-weight="400">Nothing Phone (2a)</text>
-  <text x="76" y="326" fill="#fff" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="400">#By cdn-pacman</text>
-  <rect x="780" y="50" width="300" height="400" rx="57" fill="#e9eeeb"/>
-  <rect x="788" y="58" width="284" height="384" rx="51" fill="#071413"/>
-  <g clip-path="url(#screen-clip)">
-    <rect x="790" y="60" width="280" height="370" fill="url(#display)"/>
-    <ellipse cx="929" cy="174" rx="142" ry="115" fill="#93b4ad" opacity=".26" filter="url(#mist)"/>
-    <use href="#pine" transform="translate(824 196) scale(.67)" opacity=".78"/>
-    <use href="#pine" transform="translate(888 151) scale(1.02)" opacity=".94"/>
-    <use href="#pine" transform="translate(968 177) scale(.78)" opacity=".88"/>
-    <use href="#pine" transform="translate(1051 127) scale(1.23)" opacity=".91"/>
-    <use href="#pine" transform="translate(846 309) scale(.76)" opacity=".9"/>
-    <use href="#pine" transform="translate(917 287) scale(.65)" opacity=".75"/>
-    <use href="#pine" transform="translate(1004 297) scale(.88)" opacity=".9"/>
-    <use href="#pine" transform="translate(1060 271) scale(.68)" opacity=".8"/>
-    <path d="M790 235c64-30 98 18 146-4s82-17 134 10v75c-56-24-93-8-145 5s-89-17-135 8Z" fill="url(#fog)" filter="url(#mist)"/>
-    <path d="M790 314c48-23 96 10 140-3s87-23 140 4v77c-57-15-93 13-145 5s-92-9-135 18Z" fill="#b9cbc6" opacity=".15" filter="url(#mist)"/>
-    <rect x="790" y="60" width="280" height="370" fill="url(#phone-glass)"/>
-    <rect x="790" y="60" width="280" height="370" filter="url(#grain)" opacity=".2"/>
+  <text x="74" y="273" fill="#f5ffff" font-family="Arial,Helvetica,sans-serif" font-size="48">Nothing Phone (2a)</text>
+  <text x="76" y="326" fill="#fff" font-family="Arial,Helvetica,sans-serif" font-size="30">#By cdn-pacman</text>
+  <rect x="780" y="50" width="300" height="400" rx="57" fill="#e9eeeb"/><rect x="788" y="58" width="284" height="384" rx="51" fill="#071413"/>
+  <g clip-path="url(#screen-clip)"><rect x="790" y="60" width="280" height="370" fill="url(#screen)"/>
+    <use href="#tree" transform="translate(824 196) scale(.67)"/><use href="#tree" transform="translate(888 151) scale(1.02)"/><use href="#tree" transform="translate(968 177) scale(.78)"/><use href="#tree" transform="translate(1051 127) scale(1.23)"/>
+    <use href="#tree" transform="translate(846 309) scale(.76)"/><use href="#tree" transform="translate(1004 297) scale(.88)"/><use href="#tree" transform="translate(1060 271) scale(.68)"/>
+    <path d="M790 235q65-30 146-4t134 10v75q-56-24-145 5t-135 8Z" fill="url(#mist)"/><path d="M790 314q48-23 140-3t140 4v77q-57-15-145 5t-135 18Z" fill="#bdcfca" opacity=".12"/>
+    <path d="M790 60h280v370H790Z" fill="#d5e5e0" opacity=".06"/>
   </g>
 </svg>
