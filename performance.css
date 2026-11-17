@@ -1,9 +1,14 @@
-/* Keep the visual style but reduce perpetual work on mobile/low-power devices. */
-.feature-image-link{animation:none!important;filter:none!important;translate:none!important;transform:translateZ(0);will-change:auto!important}
-.feature-image-link::before{animation:none!important;opacity:.34;transform:translateX(-115%)}
-.feature-image{content-visibility:auto}
-.library-rom-card{animation:none!important;will-change:auto!important}
-.pacman-brand em{animation:brand-spectrum 8s linear infinite!important;filter:none!important}
-.hero-actions .primary-button,.hero-actions .outline-button{animation:none!important}
-.hero-actions .primary-button::before,.hero-actions .outline-button::before{animation:none!important;opacity:.4}
-@media(prefers-reduced-motion:reduce){.pacman-brand em{animation:none!important}}
+/* Low-power rendering overrides: prioritize scrolling and input responsiveness. */
+html{scroll-behavior:auto!important}
+body{background:#030303!important;background-attachment:scroll!important;transition:none!important}
+body::before{display:none!important}
+#rain-canvas{display:none!important}
+.feature-image-link,.feature-image-link:hover{animation:none!important;filter:none!important;translate:none!important;transform:none!important;will-change:auto!important;box-shadow:0 12px 30px rgba(0,0,0,.24)!important}
+.feature-image-link::before{display:none!important;animation:none!important}
+.pacman-brand em,.pacman-brand .brand-status-dot,.pacman-brand .brand-status-dot::after,.hero-device-badge .status-dot,.hero-device-badge .status-dot::after{animation:none!important;filter:none!important}
+.hero-actions .primary-button,.hero-actions .outline-button,.hero-actions .primary-button::before,.hero-actions .outline-button::before,.welcome-glow,.welcome-card,.welcome-go,.library-rom-card{animation:none!important;filter:none!important}
+.welcome-screen,.welcome-card,.rom-library,.library-rom-card,.device-card,.telegram-option,.release-notice,.project-info-card,.feature-image-link{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+.welcome-screen,.dialog::backdrop,dialog::backdrop{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+.welcome-screen{background:rgba(4,5,10,.88)!important}
+rom-library-grid{content-visibility:auto}
+@media(max-width:760px){.rom-library,.library-rom-card,.feature-image-link{box-shadow:0 8px 24px rgba(0,0,0,.2)!important}}
