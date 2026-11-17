@@ -1,0 +1,32 @@
+/* Glassmorphism, animated fire-gradient branding, and pointer-reactive UI. */
+:root{--glass-fill:rgba(20,18,23,.66);--glass-edge:rgba(255,255,255,.16);--glass-blur:22px;--pointer-x:50vw;--pointer-y:30vh}
+body{position:relative;isolation:isolate;overflow-x:hidden;background:radial-gradient(ellipse at var(--pointer-x) var(--pointer-y),rgba(255,64,35,.105),transparent 34%),#030303;background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 12% 18%,rgba(255,53,31,.10),transparent 34%),radial-gradient(ellipse at 88% 72%,rgba(255,111,25,.075),transparent 32%);opacity:.85}
+.topbar{background:rgba(5,5,7,.66)!important;border-bottom:1px solid rgba(255,255,255,.12)!important;backdrop-filter:blur(24px) saturate(145%);-webkit-backdrop-filter:blur(24px) saturate(145%)}
+.brand{color:#fff!important;text-transform:lowercase;text-shadow:0 0 18px rgba(255,77,39,.32)}
+.brand span{background:linear-gradient(100deg,#fff2d6 0%,#ffb347 24%,#ff4b32 52%,#ffbd50 74%,#fff0d6 100%)!important;background-size:240% 100%!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;animation:fire-flow 3.2s linear infinite,fire-glow 1.5s ease-in-out infinite alternate}
+@keyframes fire-flow{to{background-position:240% 50%}}
+@keyframes fire-glow{from{text-shadow:0 0 7px rgba(255,91,36,.38),0 0 16px rgba(255,54,30,.18)}to{text-shadow:0 0 12px rgba(255,169,57,.8),0 0 30px rgba(255,52,30,.55),0 0 44px rgba(255,127,33,.2)}}
+.header-actions{gap:10px!important}
+.notification-trigger,.telegram-trigger{position:relative;display:grid!important;place-items:center;min-width:44px!important;width:46px;height:46px;min-height:44px!important;padding:0!important;border:1px solid rgba(255,255,255,.16)!important;border-radius:15px!important;background:rgba(255,255,255,.055)!important;color:#fff;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:transform .22s ease,border-color .22s ease,background .22s ease,box-shadow .22s ease}
+.notification-trigger:hover,.telegram-trigger:hover{transform:translateY(-2px);border-color:rgba(255,111,69,.65)!important;background:rgba(255,86,52,.12)!important;box-shadow:0 0 24px rgba(255,67,39,.2)}
+.notification-trigger svg,.telegram-trigger svg{width:21px!important;height:21px!important;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.telegram-trigger svg{fill:currentColor;stroke:none}
+.notification-count{position:absolute;top:7px;right:7px;width:7px;height:7px;border-radius:50%;background:#ff4c36;box-shadow:0 0 10px #ff3d2c}
+.notification-count[hidden]{display:none}
+/* Native dialogs blur and dim the entire page behind every open popup. */
+dialog::backdrop{background:rgba(4,4,8,.50);backdrop-filter:blur(14px) saturate(120%);-webkit-backdrop-filter:blur(14px) saturate(120%);animation:backdrop-in .24s ease both}
+@keyframes backdrop-in{from{opacity:0}to{opacity:1}}
+dialog.site-dialog,dialog.telegram-dialog,dialog.screenshot-viewer{border:1px solid rgba(255,255,255,.2)!important;background:linear-gradient(145deg,rgba(32,29,35,.82),rgba(10,10,14,.72))!important;box-shadow:0 28px 100px rgba(0,0,0,.62),inset 0 1px rgba(255,255,255,.11),0 0 48px rgba(255,70,43,.08)!important;backdrop-filter:blur(30px) saturate(150%);-webkit-backdrop-filter:blur(30px) saturate(150%);animation:glass-pop .28s cubic-bezier(.2,.8,.2,1) both}
+@keyframes glass-pop{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.telegram-option,.release-notice,.catalog-rom-card,.device-card,.project-info-card,.feature-image-link{border-color:var(--glass-edge)!important;background-color:var(--glass-fill)!important;backdrop-filter:blur(var(--glass-blur)) saturate(140%);-webkit-backdrop-filter:blur(var(--glass-blur)) saturate(140%);box-shadow:inset 0 1px rgba(255,255,255,.07),0 14px 44px rgba(0,0,0,.18)}
+.telegram-option,.release-notice,.device-card,.project-info-card{transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+.telegram-option:hover,.release-notice:hover,.device-card:hover,.project-info-card:hover{transform:translateY(-3px);border-color:rgba(255,111,69,.42)!important;box-shadow:inset 0 1px rgba(255,255,255,.1),0 18px 50px rgba(0,0,0,.28),0 0 24px rgba(255,70,43,.08)}
+.project-info-card{max-width:760px;margin:28px auto 0;padding:24px 28px;border:1px solid var(--glass-edge);border-radius:24px;color:var(--text)}
+.project-info-card p{margin:0;padding:13px 0;color:#d0cdd2}.project-info-card p+p{border-top:1px solid rgba(255,255,255,.09)}.project-info-card strong{color:#fff}
+.support-link a{color:#ffb36b;text-decoration:none}.support-link a:hover{color:#fff;text-shadow:0 0 16px rgba(255,111,51,.7)}
+.feature-image-link{border:1px solid rgba(255,255,255,.14)!important;overflow:hidden;transition:transform .35s ease,box-shadow .35s ease}.feature-image-link:hover{transform:translateY(-4px);box-shadow:0 22px 70px rgba(0,0,0,.4),0 0 34px rgba(255,67,39,.14)}
+/* Cursor-following warm light; JS updates these variables only on fine pointers. */
+@media (pointer:fine){body{transition:background .12s linear}.device-card,.feature-image-link,.project-info-card{transform-style:preserve-3d;will-change:transform}}
+@media(max-width:600px){.project-info-card{padding:16px 18px;border-radius:19px}.notification-trigger,.telegram-trigger{width:42px;height:42px;min-width:42px!important;min-height:42px!important;border-radius:13px!important}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
