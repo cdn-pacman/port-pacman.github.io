@@ -6,19 +6,20 @@
   <meta name="theme-color" content="#050505">
   <meta name="description" content="Custom ROMs for Nothing Phone (2a), codename Pacman, by Pacman Port ROMs.">
   <title>Pacman Port ROMs — Nothing Phone (2a)</title>
-  <link rel="stylesheet" href="style.css?v=journey-1">
-  <link rel="stylesheet" href="layout.css?v=journey-1">
-  <link rel="stylesheet" href="catalog.css?v=journey-1">
-  <link rel="stylesheet" href="effects.css?v=journey-1">
-  <link rel="stylesheet" href="polish.css?v=journey-1">
-  <link rel="stylesheet" href="rom-popup.css?v=journey-1">
-  <link rel="stylesheet" href="journey.css?v=journey-1">
+  <link rel="stylesheet" href="style.css?v=journey-2">
+  <link rel="stylesheet" href="layout.css?v=journey-2">
+  <link rel="stylesheet" href="catalog.css?v=journey-2">
+  <link rel="stylesheet" href="effects.css?v=journey-2">
+  <link rel="stylesheet" href="polish.css?v=journey-2">
+  <link rel="stylesheet" href="rom-popup.css?v=journey-2">
+  <link rel="stylesheet" href="journey.css?v=journey-2">
+  <link rel="stylesheet" href="finishing.css?v=journey-2">
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script src="script.js?v=journey-1" defer></script>
-  <script src="catalog.js?v=journey-1" defer></script>
-  <script src="interactions.js?v=journey-1" defer></script>
-  <script src="rom-library.js?v=journey-1" defer></script>
-  <script src="welcome.js?v=journey-1" defer></script>
+  <script src="script.js?v=journey-2" defer></script>
+  <script src="catalog.js?v=journey-2" defer></script>
+  <script src="interactions.js?v=journey-2" defer></script>
+  <script src="rom-library.js?v=journey-2" defer></script>
+  <script src="welcome.js?v=journey-2" defer></script>
 </head>
 <body>
   <div class="welcome-screen" id="welcome-screen" aria-hidden="true">
@@ -32,7 +33,6 @@
       <button class="welcome-go" id="welcome-go" type="button" data-i18n="letsGo">Let’s go <span aria-hidden="true">→</span></button>
     </section>
   </div>
-
   <canvas id="rain-canvas" aria-hidden="true"></canvas>
   <nav class="topbar" aria-label="Main navigation">
     <a class="brand pacman-brand" href="#home"><span class="brand-status-dot" aria-hidden="true"></span><span class="brand-name">Pacman Port <em>ROMs</em></span></a>
@@ -51,14 +51,7 @@
     </section>
   </main>
   <footer class="site-footer"><a class="brand pacman-brand" href="#home"><span class="brand-status-dot" aria-hidden="true"></span><span class="brand-name">Pacman Port <em>ROMs</em></span></a><p>Independent development for Nothing Phone (2a) · Pacman.</p><a class="maintainer-link" href="https://github.com/cdn-pacman" target="_blank" rel="noopener noreferrer">Maintainer: cdn-pacman (GitHub) ↗</a><p class="support-link"><a href="https://t.me/NothingPhone2a" target="_blank" rel="noopener noreferrer">Official ROMs &amp; support group · @NothingPhone2aUpdates</a></p></footer>
-
-  <dialog id="rom-dialog" class="site-dialog rom-dialog rom-experience" aria-labelledby="rom-dialog-title">
-    <button type="button" class="dialog-close" data-close-dialog="rom-dialog" aria-label="Close ROM details">×</button>
-    <div class="rom-dialog-head"><span class="rom-kicker">PACMAN ROM</span><h2 id="rom-dialog-title">ROM details</h2><p id="rom-dialog-device" class="rom-maintainers">Nothing Phone (2a) · Maintainer: CDN-Pacman</p><div class="rom-switcher" aria-label="Switch ROM"><button type="button" id="rom-prev" aria-label="Previous ROM">↑</button><span id="rom-position">1 / 1</span><button type="button" id="rom-next" aria-label="Next ROM">↓</button></div></div>
-    <nav class="rom-tabs" aria-label="ROM information tabs" role="tablist"><button type="button" class="rom-tab is-active" id="rom-tab-about" role="tab" aria-selected="true" aria-controls="rom-panel" data-rom-tab="about" data-i18n="tabAbout">About ROM</button><button type="button" class="rom-tab" id="rom-tab-download" role="tab" aria-selected="false" aria-controls="rom-panel" data-rom-tab="download" data-i18n="tabDownload">Download</button><button type="button" class="rom-tab" id="rom-tab-screenshots" role="tab" aria-selected="false" aria-controls="rom-panel" data-rom-tab="screenshots" data-i18n="tabScreenshots">Screenshots</button></nav>
-    <div id="rom-panel" class="rom-panel" role="tabpanel" aria-labelledby="rom-tab-about"><p class="rom-loading">Loading ROM information…</p></div>
-    <p class="rom-swipe-hint" data-i18n="swipeHint">Swipe up/down to switch ROM · swipe left/right to change section</p>
-  </dialog>
+  <dialog id="rom-dialog" class="site-dialog rom-dialog rom-experience" aria-labelledby="rom-dialog-title"><button type="button" class="dialog-close" data-close-dialog="rom-dialog" aria-label="Close ROM details">×</button><div class="rom-dialog-head"><span class="rom-kicker">PACMAN ROM</span><h2 id="rom-dialog-title">ROM details</h2><p id="rom-dialog-device" class="rom-maintainers">Nothing Phone (2a) · Maintainer: CDN-Pacman</p><div class="rom-switcher" aria-label="Switch ROM"><button type="button" id="rom-prev" aria-label="Previous ROM">↑</button><span id="rom-position">1 / 1</span><button type="button" id="rom-next" aria-label="Next ROM">↓</button></div></div><nav class="rom-tabs" aria-label="ROM information tabs" role="tablist"><button type="button" class="rom-tab is-active" id="rom-tab-about" role="tab" aria-selected="true" aria-controls="rom-panel" data-rom-tab="about" data-i18n="tabAbout">About ROM</button><button type="button" class="rom-tab" id="rom-tab-download" role="tab" aria-selected="false" aria-controls="rom-panel" data-rom-tab="download" data-i18n="tabDownload">Download</button><button type="button" class="rom-tab" id="rom-tab-screenshots" role="tab" aria-selected="false" aria-controls="rom-panel" data-rom-tab="screenshots" data-i18n="tabScreenshots">Screenshots</button></nav><div id="rom-panel" class="rom-panel" role="tabpanel" aria-labelledby="rom-tab-about"><p class="rom-loading">Loading ROM information…</p></div><p class="rom-swipe-hint" data-i18n="swipeHint">Swipe up/down to switch ROM · swipe left/right to change section</p></dialog>
   <dialog id="screenshot-viewer" class="screenshot-viewer" aria-label="ROM screenshot viewer"><button type="button" class="viewer-close" aria-label="Close screenshot viewer">×</button><button type="button" class="viewer-prev" aria-label="Previous screenshot">‹</button><img class="viewer-image" alt="ROM screenshot"><button type="button" class="viewer-next" aria-label="Next screenshot">›</button><span class="viewer-count"></span><span class="viewer-swipe-hint">SWIPE LEFT OR RIGHT TO BROWSE</span></dialog>
   <dialog id="release-dialog" class="site-dialog release-dialog" aria-labelledby="release-dialog-title"><button type="button" class="dialog-close" data-close-dialog="release-dialog" aria-label="Close notifications">×</button><div class="eyebrow dialog-eyebrow">GITHUB RELEASES</div><h2 id="release-dialog-title">Release notifications</h2><p class="dialog-copy">Recent releases published in this website repository.</p><div id="release-list" class="release-list" aria-live="polite"><p class="loading-state">Loading releases…</p></div></dialog>
   <dialog id="telegram-dialog" class="telegram-dialog" aria-labelledby="telegram-title"><button type="button" class="dialog-close" id="close-telegram" aria-label="Close Telegram dashboard">×</button><div class="telegram-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21.7 3.3a1.2 1.2 0 0 0-1.25-.18L2.7 10.1a1.25 1.25 0 0 0 .1 2.35l4.4 1.5 1.5 4.65a1.25 1.25 0 0 0 2.2.38l2.55-3.1 4.35 3.2a1.25 1.25 0 0 0 1.95-.78l2.3-13.75a1.25 1.25 0 0 0-.35-1.25ZM9 13.2l8.4-6.15-6.9 7.5-.3 2.55L9 13.2Z"/></svg></div><div class="eyebrow dialog-eyebrow">PACMAN COMMUNITY</div><h2 id="telegram-title">Telegram groups</h2><p class="dialog-copy">Choose where you want to go.</p><a class="telegram-option" href="https://t.me/pacman_ports" target="_blank" rel="noopener noreferrer"><span><strong>Release group</strong><small>ROM announcements and downloads</small></span><b>↗</b></a><a class="telegram-option" href="https://t.me/nikki_chats" target="_blank" rel="noopener noreferrer"><span><strong>Maintainer support</strong><small>Questions and community help</small></span><b>↗</b></a><a class="telegram-option" href="https://t.me/NothingPhone2a" target="_blank" rel="noopener noreferrer"><span><strong>Official ROMs &amp; support</strong><small>@NothingPhone2aUpdates</small></span><b>↗</b></a></dialog>
